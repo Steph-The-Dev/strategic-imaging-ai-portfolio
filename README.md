@@ -1,6 +1,6 @@
 # Strategic Imaging AI Portfolio
 
-**REF.ID: SP-DS-2024**
+**REF.ID: SP-DS-2026**
 
 A highly modular, high-performance professional portfolio built with [Astro](https://astro.build/) and [Tailwind CSS v4](https://tailwindcss.com/). 
 
@@ -73,4 +73,4 @@ The codebase is organized utilizing modern component architecture:
 
 ---
 
-*© 2024 S.Pfeiffer // Spec_ID: 104-DS-IMG*
+*© 2026 S.Pfeiffer // Spec_ID: 104-DS-IMG*
