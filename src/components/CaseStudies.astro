@@ -35,16 +35,24 @@
         
         <div class="bg-[#1e1e1e] dark:bg-black p-5 overflow-hidden border border-on-surface dark:border-slate-700 transition-colors">
           <div class="flex justify-between mb-4 border-b border-white/10 pb-3">
-            <span class="font-mono text-[11px] md:text-xs text-gray-500 uppercase">File: normalization.py</span>
+            <span class="font-mono text-[11px] md:text-xs text-gray-500 uppercase">File: reinhard.py</span>
             <div class="flex space-x-1.5">
               <div class="w-2.5 h-2.5 rounded-full bg-red-500/40"></div>
               <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/40"></div>
             </div>
           </div>
-          <pre class="font-mono text-xs md:text-sm font-semibold text-blue-300 overflow-x-auto leading-relaxed"><code>def lab_norm(img):
-  l, a, b = rgb2lab(img)
-  norm_l = model_G(l)
-  return lab2rgb(norm_l, a, b)</code></pre>
+          <pre class="font-mono text-xs md:text-sm font-semibold text-blue-300 overflow-x-auto leading-relaxed"><code>def normalize_stain(src, target):
+    # Transform to Lab for chromatic decoupling
+    src_lab = cv2.cvtColor(src, cv2.COLOR_BGR2LAB).astype(np.float32)
+    tgt_lab = cv2.cvtColor(target, cv2.COLOR_BGR2LAB).astype(np.float32)
+
+    # Statistical matching via masked mean/std
+    s_mu, s_sigma = get_masked_stats(src_lab, mask=s_mask)
+    t_mu, t_sigma = get_masked_stats(tgt_lab, mask=t_mask)
+
+    # Linear scaling and re-integration
+    norm = (src_lab - s_mu) * (t_sigma / s_sigma) + t_mu
+    return cv2.cvtColor(norm.astype(np.uint8), cv2.COLOR_LAB2BGR)</code></pre>
         </div>
       </div>
       
