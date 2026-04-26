@@ -1,15 +1,16 @@
 ---
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="w-full py-8 border-t-2 border-on-surface dark:border-slate-700 bg-white dark:bg-slate-900 transition-colors duration-300">
   <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-6">
-    <div class="font-mono text-[10px] uppercase font-bold text-on-surface-variant dark:text-slate-500 tracking-widest transition-colors">
-      © 2024 S.Pfeiffer // Spec_ID: 104-DS-IMG
+    <div class="font-mono text-[11px] md:text-xs uppercase font-bold text-on-surface-variant dark:text-slate-500 tracking-widest transition-colors">
+      © {currentYear} S.Pfeiffer // Spec_ID: 104-DS-IMG
     </div>
-    <nav class="flex space-x-8 font-mono text-[10px] uppercase font-bold tracking-widest">
-      <a class="text-on-surface dark:text-slate-400 hover:text-primary dark:hover:text-primary-fixed transition-colors underline decoration-2 underline-offset-4" href="https://linkedin.com">LINKEDIN</a>
-      <a class="text-on-surface dark:text-slate-400 hover:text-primary dark:hover:text-primary-fixed transition-colors underline decoration-2 underline-offset-4" href="https://github.com">GITHUB</a>
-      <a class="text-on-surface dark:text-slate-400 hover:text-primary dark:hover:text-primary-fixed transition-colors underline decoration-2 underline-offset-4" href="#">RESEARCH</a>
+    <nav class="flex space-x-8 font-mono text-[11px] md:text-xs uppercase font-bold tracking-widest">
+      <a class="text-on-surface dark:text-slate-400 hover:text-primary dark:hover:text-primary-fixed focus:outline-none focus:ring-2 focus:ring-primary transition-colors underline decoration-2 underline-offset-4" href="https://linkedin.com">LINKEDIN</a>
+      <a class="text-on-surface dark:text-slate-400 hover:text-primary dark:hover:text-primary-fixed focus:outline-none focus:ring-2 focus:ring-primary transition-colors underline decoration-2 underline-offset-4" href="https://github.com">GITHUB</a>
+      <a class="text-on-surface dark:text-slate-400 hover:text-primary dark:hover:text-primary-fixed focus:outline-none focus:ring-2 focus:ring-primary transition-colors underline decoration-2 underline-offset-4" href="#expertise">RESEARCH</a>
     </nav>
   </div>
 </footer>

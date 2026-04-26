@@ -20,18 +20,18 @@ const colorClasses = {
 
 <div class="bg-white dark:bg-slate-900 p-6 space-y-6 flex flex-col h-full transition-colors">
   <div class="flex justify-between items-start">
-    <span class="font-mono text-xs font-bold text-primary dark:text-primary-fixed">{id}</span>
-    <span class={`font-mono text-[10px] px-2 py-0.5 border ${colorClasses[statusColor]}`}>{status}</span>
+    <span class="font-mono text-xs md:text-sm font-bold text-primary dark:text-primary-fixed">{id}</span>
+    <span class={`font-mono text-[10px] md:text-xs px-2 py-1 border ${colorClasses[statusColor]}`}>{status}</span>
   </div>
   <div class="space-y-2">
     <h3 class="font-mono font-bold text-sm leading-tight text-on-background dark:text-slate-100 uppercase transition-colors">{title}</h3>
     <p class="font-sans text-[13px] text-on-surface-variant dark:text-slate-400 leading-snug transition-colors">{description}</p>
   </div>
   <div class="mt-auto pt-4 border-t border-dashed border-outline-variant dark:border-slate-700 transition-colors">
-    <span class="font-mono text-[9px] text-outline dark:text-slate-500 font-bold uppercase mb-2 block">Technical_Metadata:</span>
-    <div class="flex flex-wrap gap-1">
+    <span class="font-mono text-[10px] md:text-xs text-outline dark:text-slate-500 font-bold uppercase mb-2 block">Technical_Metadata:</span>
+    <div class="flex flex-wrap gap-2">
       {metadata.map(tag => (
-        <span class="font-mono text-[9px] text-on-surface dark:text-slate-300 bg-surface-container dark:bg-slate-800 px-1.5 py-0.5 border border-outline-variant/30 dark:border-slate-700/50">
+        <span class="font-mono text-[11px] md:text-xs text-on-surface dark:text-slate-300 bg-surface-container dark:bg-slate-800 px-2 py-1 border border-outline-variant/30 dark:border-slate-700/50">
           {tag}
         </span>
       ))}
