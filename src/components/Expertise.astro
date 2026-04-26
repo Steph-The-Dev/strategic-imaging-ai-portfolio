@@ -1,0 +1,68 @@
+---
+import CareerPhase from "./CareerPhase.astro";
+
+const careerPhases: React.ComponentProps<typeof CareerPhase>[] = [
+  {
+    id: "MOD_01",
+    status: "FOUNDATION_LOCKED",
+    statusColor: "green",
+    title: "BA International Business Studies",
+    description: "Structural business logic and international marketing management foundations.",
+    metadata: ["Strategic_Mgmt", "Linguistic_S1", "Marketing_Quant"]
+  },
+  {
+    id: "MOD_02",
+    status: "CORE_EXPERTISE",
+    statusColor: "blue",
+    title: "TV Editor & Colorist (20Y)",
+    description: "Deep specialization in visual storytelling and high-precision digital image processing.",
+    metadata: ["Chromatic_Eng", "NLE_Architecture", "Signal_QC"]
+  },
+  {
+    id: "MOD_03",
+    status: "SCHEDULED_06.26",
+    statusColor: "amber",
+    title: "Deep Learning Specialization",
+    description: "GSERM, Univ. St. Gallen. Advanced neural network architectures under Prof. Damian Borth.",
+    metadata: ["CNNs", "Adversarial_Nets", "Pytorch_L"]
+  },
+  {
+    id: "MOD_04",
+    status: "STATUS_ONGOING",
+    statusColor: "primary",
+    title: "MSc Applied Info & Data Science",
+    description: "HSLU. Converting visual domain expertise into scalable machine learning and engineering models.",
+    metadata: ["ML_Engineering", "Big_Data_Infra", "Predictive_Modeling"]
+  }
+];
+---
+
+<section class="py-24 bg-white dark:bg-slate-900 border-b border-outline-variant dark:border-slate-800 transition-colors duration-300" id="expertise">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-2 border-on-surface dark:border-slate-700 pb-6 gap-4 transition-colors">
+      <div class="space-y-1">
+        <span class="font-mono text-[10px] text-primary dark:text-primary-fixed font-bold tracking-[0.3em] uppercase">Phase_Mapping</span>
+        <h2 class="font-mono font-extrabold text-3xl md:text-4xl text-on-background dark:text-slate-100 uppercase tracking-tighter transition-colors">The Strategic Evolution</h2>
+      </div>
+      <div class="font-mono text-[10px] text-on-surface-variant dark:text-slate-400 uppercase text-right leading-tight transition-colors">
+        Doc. Type: Career_Architecture_v2.4<br/>
+        Last Sync: 2024-Q4
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-outline-variant dark:bg-slate-800 border border-outline-variant dark:border-slate-800 transition-colors">
+      {careerPhases.map(phase => (
+        <CareerPhase {...phase} />
+      ))}
+    </div>
+
+    <div class="mt-12 bg-surface-container dark:bg-slate-800 p-6 border border-outline-variant dark:border-slate-700 flex flex-col md:flex-row gap-8 items-center transition-colors">
+      <div class="flex-shrink-0">
+        <span class="material-symbols-outlined text-4xl text-primary dark:text-primary-fixed">hub</span>
+      </div>
+      <div class="font-mono text-xs text-on-surface-variant dark:text-slate-300 max-w-3xl leading-relaxed">
+        <strong class="text-on-surface dark:text-slate-100">[STRATEGIC_CONVERGENCE]:</strong> The trajectory follows a precise integration of business administration (Logic), high-end media production (Signal), and academic rigor (Intelligence). This modular background enables a unique approach to data science where technical imaging intuition meets analytical scalability.
+      </div>
+    </div>
+  </div>
+</section>

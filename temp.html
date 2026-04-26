@@ -1,0 +1,355 @@
+<html class="light" lang="en"><head></head><body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary selection:text-on-primary">```html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stephan Pfeiffer - Technical Specification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#341100",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed": "#cde5ff",
+                        "outline-variant": "#c0c7d1",
+                        "surface-tint": "#006399",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#ffdbca",
+                        "on-tertiary-fixed": "#0d1c2f",
+                        "tertiary-fixed-dim": "#b9c7e0",
+                        "on-surface-variant": "#40474f",
+                        "tertiary": "#3f4d62",
+                        "on-secondary-container": "#5c2400",
+                        "inverse-on-surface": "#eaf1ff",
+                        "inverse-primary": "#94ccff",
+                        "secondary-fixed-dim": "#ffb690",
+                        "tertiary-container": "#57657a",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#3a485c",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#004b74",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-container": "#d4e3fc",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-surface": "#0b1c30",
+                        "tertiary-fixed": "#d5e3fd",
+                        "secondary-container": "#fd761a",
+                        "on-primary-fixed": "#001d32",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#9d4300",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#94ccff",
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#00507d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#cbe4ff",
+                        "primary-container": "#0369a1",
+                        "on-secondary-fixed-variant": "#783200",
+                        "outline": "#707881"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        .technical-grid {
+            background-image: 
+                linear-gradient(to right, rgba(0, 99, 153, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 99, 153, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .data-border {
+            border: 1px solid rgba(112, 120, 129, 0.2);
+        }
+        .clinical-header {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+    </style>
+
+
+<header class="fixed top-0 w-full z-50 bg-white border-b-2 border-on-surface transition-all duration-300">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-14">
+<div class="font-mono font-bold text-sm tracking-tight text-on-background">
+            REF.ID: SP-DS-2024
+        </div>
+<nav class="hidden md:flex space-x-1 font-mono text-[11px] uppercase font-bold tracking-wider">
+<a class="hover:bg-primary hover:text-white px-4 py-4 transition-colors" href="#expertise">01_STRATEGIC_EVOLUTION</a>
+<a class="hover:bg-primary hover:text-white px-4 py-4 transition-colors" href="#case-studies">02_TECHNICAL_CASE</a>
+<a class="hover:bg-primary hover:text-white px-4 py-4 transition-colors" href="#contact">03_COLLABORATION</a>
+</nav>
+<div class="flex items-center space-x-4">
+<div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+<button class="text-on-surface hover:bg-surface-variant p-1">
+<span class="material-symbols-outlined text-[20px]">settings_brightness</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-14">
+<section class="relative border-b border-outline-variant bg-white technical-grid">
+<div class="max-w-7xl mx-auto px-6 py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+<div class="lg:col-span-7 space-y-10 border-r-0 lg:border-r border-outline-variant pr-0 lg:pr-12">
+<div class="inline-flex items-center space-x-3 border border-outline-variant px-3 py-1 bg-surface-container">
+<span class="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.2em]">System Status: Operational</span>
+</div>
+<h1 class="font-mono font-extrabold text-4xl md:text-6xl leading-[0.95] tracking-tighter text-on-background uppercase">
+                    Bridging <span class="bg-primary text-white px-2">Visual Logic</span><br/>with Data Science.
+                </h1>
+<div class="font-mono text-sm space-y-4 max-w-xl text-on-surface-variant border-l-4 border-primary pl-6">
+<p class="leading-relaxed">
+                        [DOMAIN_OVERVIEW]: Twenty-year tenure as TV Editor &amp; Colorist transitioning into Applied Data Science. Specialization in digital signal processing, chromatic alignment, and algorithmic visual optimization.
+                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-0 pt-4">
+<a class="inline-flex justify-center items-center px-6 py-4 bg-on-background text-white font-mono text-xs font-bold uppercase tracking-widest hover:bg-primary transition-colors border-r border-white/10" href="#case-studies">
+                        EXECUTE_PROJECT_VIEW
+                    </a>
+<a class="inline-flex justify-center items-center px-6 py-4 border border-on-background text-on-background font-mono text-xs font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors" href="#contact">
+                        INITIATE_CONTACT
+                    </a>
+</div>
+</div>
+<div class="lg:col-span-5 relative hidden lg:flex flex-col justify-center items-center p-12">
+<div class="w-full aspect-square border-2 border-on-surface p-4 relative group">
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary -translate-x-1 -translate-y-1"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary translate-x-1 -translate-y-1"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary -translate-x-1 translate-y-1"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary translate-x-1 translate-y-1"></div>
+<img alt="Abstract macro clinical image" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIzJPdgOQS4XJiWCfp-WHK5K5z3JrG4XRMuXkjgcufLbOtc1lMiO3JzjEsTlsb-rdvu-p1kGUesYMmFLG74L3CmnQEnDEHPI_PKa1v87oCwUUmGQ6GmlObxsYm8R4RuMuK1xKLrqGwEi-K5uLrYaFbPtTY8BctewTsiRxjUAjs6CHEXxU1Cj8RjWx4AaJA327djrm86LQ48thwc4uwFkBdwfsY7mz8mlF_LFUPVuBPtYP6L0PBDdw2reCTaDhb9PSwA5GuEgyGPQ"/>
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-primary/20 pointer-events-none"></div>
+<div class="absolute top-0 left-1/2 h-full w-[1px] bg-primary/20 pointer-events-none"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white border-b border-outline-variant" id="expertise">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-2 border-on-surface pb-6 gap-4">
+<div class="space-y-1">
+<span class="font-mono text-[10px] text-primary font-bold tracking-[0.3em] uppercase">Phase_Mapping</span>
+<h2 class="font-mono font-extrabold text-3xl md:text-4xl uppercase tracking-tighter">The Strategic Evolution</h2>
+</div>
+<div class="font-mono text-[10px] text-on-surface-variant uppercase text-right leading-tight">
+                    Doc. Type: Career_Architecture_v2.4<br/>
+                    Last Sync: 2024-Q4
+                </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-outline-variant border border-outline-variant">
+<div class="bg-white p-6 space-y-6 flex flex-col h-full">
+<div class="flex justify-between items-start">
+<span class="font-mono text-xs font-bold text-primary">MOD_01</span>
+<span class="font-mono text-[10px] bg-green-100 text-green-800 px-2 py-0.5 border border-green-200">FOUNDATION_LOCKED</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-mono font-bold text-sm leading-tight uppercase">BA International Business Studies</h3>
+<p class="font-sans text-[13px] text-on-surface-variant leading-snug">Structural business logic and international marketing management foundations.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-dashed border-outline-variant">
+<span class="font-mono text-[9px] text-outline font-bold uppercase mb-2 block">Technical_Metadata:</span>
+<div class="flex flex-wrap gap-1">
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Strategic_Mgmt</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Linguistic_S1</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Marketing_Quant</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 space-y-6 flex flex-col h-full">
+<div class="flex justify-between items-start">
+<span class="font-mono text-xs font-bold text-primary">MOD_02</span>
+<span class="font-mono text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 border border-blue-200">CORE_EXPERTISE</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-mono font-bold text-sm leading-tight uppercase">TV Editor &amp; Colorist (20Y)</h3>
+<p class="font-sans text-[13px] text-on-surface-variant leading-snug">Deep specialization in visual storytelling and high-precision digital image processing.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-dashed border-outline-variant">
+<span class="font-mono text-[9px] text-outline font-bold uppercase mb-2 block">Technical_Metadata:</span>
+<div class="flex flex-wrap gap-1">
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Chromatic_Eng</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">NLE_Architecture</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Signal_QC</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 space-y-6 flex flex-col h-full">
+<div class="flex justify-between items-start">
+<span class="font-mono text-xs font-bold text-primary">MOD_03</span>
+<span class="font-mono text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 border border-amber-200">SCHEDULED_06.26</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-mono font-bold text-sm leading-tight uppercase">Deep Learning Specialization</h3>
+<p class="font-sans text-[13px] text-on-surface-variant leading-snug">GSERM, Univ. St. Gallen. Advanced neural network architectures under Prof. Damian Borth.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-dashed border-outline-variant">
+<span class="font-mono text-[9px] text-outline font-bold uppercase mb-2 block">Technical_Metadata:</span>
+<div class="flex flex-wrap gap-1">
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">CNNs</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Adversarial_Nets</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Pytorch_L</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 space-y-6 flex flex-col h-full">
+<div class="flex justify-between items-start">
+<span class="font-mono text-xs font-bold text-primary">MOD_04</span>
+<span class="font-mono text-[10px] bg-primary/10 text-primary px-2 py-0.5 border border-primary/20">STATUS_ONGOING</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-mono font-bold text-sm leading-tight uppercase">MSc Applied Info &amp; Data Science</h3>
+<p class="font-sans text-[13px] text-on-surface-variant leading-snug">HSLU. Converting visual domain expertise into scalable machine learning and engineering models.</p>
+</div>
+<div class="mt-auto pt-4 border-t border-dashed border-outline-variant">
+<span class="font-mono text-[9px] text-outline font-bold uppercase mb-2 block">Technical_Metadata:</span>
+<div class="flex flex-wrap gap-1">
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">ML_Engineering</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Big_Data_Infra</span>
+<span class="font-mono text-[9px] bg-surface-container px-1.5 py-0.5 border border-outline-variant/30">Predictive_Modeling</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 bg-surface-container p-6 border border-outline-variant flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-4xl text-primary">hub</span>
+</div>
+<div class="font-mono text-xs text-on-surface-variant max-w-3xl leading-relaxed">
+<strong class="text-on-surface">[STRATEGIC_CONVERGENCE]:</strong> The trajectory follows a precise integration of business administration (Logic), high-end media production (Signal), and academic rigor (Intelligence). This modular background enables a unique approach to data science where technical imaging intuition meets analytical scalability.
+                </div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-surface-container-low" id="case-studies">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-16 border-l-8 border-primary pl-8">
+<span class="font-mono text-[11px] text-primary font-bold uppercase tracking-[0.4em] mb-3 block">TEST_REPORT_084</span>
+<h2 class="font-mono font-extrabold text-3xl md:text-5xl uppercase tracking-tighter">Stain Normalization</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-outline-variant bg-white shadow-xl">
+<div class="lg:col-span-5 p-8 border-r border-outline-variant space-y-8">
+<div class="flex flex-wrap gap-2">
+<span class="font-mono text-[10px] bg-on-background text-white px-2 py-1 uppercase">PyTorch_v2</span>
+<span class="font-mono text-[10px] bg-on-background text-white px-2 py-1 uppercase">CycleGAN_Core</span>
+<span class="font-mono text-[10px] bg-on-background text-white px-2 py-1 uppercase">CV_Engine</span>
+</div>
+<div class="space-y-4">
+<p class="font-mono text-sm text-on-surface-variant leading-relaxed">
+                            Investigation of domain shift mitigation in clinical histology. Translating color grading principles into generative adversarial architectures.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-px bg-outline-variant border border-outline-variant">
+<div class="bg-surface p-4">
+<div class="font-mono text-2xl font-bold text-primary">87%</div>
+<div class="font-mono text-[9px] uppercase font-bold text-outline">Shift_Reduction</div>
+</div>
+<div class="bg-surface p-4">
+<div class="font-mono text-2xl font-bold text-primary">+14%</div>
+<div class="font-mono text-[9px] uppercase font-bold text-outline">Acc_Delta</div>
+</div>
+</div>
+<div class="bg-[#1e1e1e] p-4 overflow-hidden border border-on-surface">
+<div class="flex justify-between mb-4 border-b border-white/10 pb-2">
+<span class="font-mono text-[10px] text-gray-500 uppercase">File: normalization.py</span>
+<div class="flex space-x-1">
+<div class="w-2 h-2 rounded-full bg-red-500/40"></div>
+<div class="w-2 h-2 rounded-full bg-yellow-500/40"></div>
+</div>
+</div>
+<pre class="font-mono text-[11px] text-blue-300 overflow-x-auto"><code>def lab_norm(img):
+  l, a, b = rgb2lab(img)
+  norm_l = model_G(l)
+  return lab2rgb(norm_l, a, b)</code></pre>
+</div>
+</div>
+<div class="lg:col-span-7 p-4 bg-on-background relative flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 opacity-10 technical-grid pointer-events-none"></div>
+<div class="relative w-full max-w-2xl aspect-[4/3] border border-white/20">
+<img alt="Microscopic histology slide" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNz6d6WUX92b-Uo66jxPNfPdES_s6xfO5kXshNDGAldPQN9xfOy8LOKAsk1Ib7bWelj24kHwey0pWsEmuCbvmFdNZ47P1OqnhQxJdJWV1pkVzDHTC1Jy68Fwk2bJ5c0Z8EK6Y8N6WTJISNiTDqjJvYzAKGz08tpLrUVkwJHwtwdms6CGyDKEbPQRNLKEDyxGlibU-MgrAIUUKolr32v573aCVwzov_7ZVTxoLs8EziSnw_PVemvf7xW30UPmSI-AFI7MgefurKDA"/>
+<div class="absolute inset-0 flex items-center">
+<div class="w-1/2 h-full border-r border-white/50 backdrop-contrast-125 backdrop-saturate-150"></div>
+</div>
+<div class="absolute bottom-4 left-4 bg-black/80 px-2 py-1">
+<span class="font-mono text-[9px] text-white tracking-widest uppercase">Input: RAW_DATA</span>
+</div>
+<div class="absolute bottom-4 right-4 bg-primary px-2 py-1">
+<span class="font-mono text-[9px] text-white tracking-widest uppercase">Output: NORM_SIG</span>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 border border-white/50 flex items-center justify-center bg-white/10 backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-sm">compare_arrows</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white" id="contact">
+<div class="max-w-4xl mx-auto px-6">
+<div class="border-2 border-on-surface p-12 md:p-20 relative technical-grid">
+<div class="absolute top-4 left-4 font-mono text-[9px] text-outline font-bold uppercase tracking-widest">
+                    Request_Parameters
+                </div>
+<div class="text-center space-y-10 relative z-10">
+<h2 class="font-mono font-extrabold text-4xl md:text-5xl uppercase tracking-tighter leading-none">
+                        Unique PERSPECTIVE.<br/>Fractional AGILITY.
+                    </h2>
+<div class="bg-surface-container border border-outline-variant p-6 max-w-xl mx-auto">
+<p class="font-mono text-sm text-on-surface-variant leading-relaxed">
+                            [AVAILABILITY]: 60% Capacity Engagement<br/>
+                            [ROLE]: Bridge Builder / Data Specialist<br/>
+                            [FOCUS]: Visual Domain Knowledge + AI Scalability
+                        </p>
+</div>
+<div>
+<a class="inline-flex justify-center items-center px-12 py-5 bg-on-background text-white font-mono text-sm font-bold uppercase tracking-[0.2em] hover:bg-primary transition-all group" href="mailto:contact@example.com">
+                            INIT_HANDSHAKE
+                            <span class="material-symbols-outlined ml-3 transition-transform group-hover:translate-x-1">arrow_forward_ios</span>
+</a>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 font-mono text-[9px] text-outline font-bold uppercase">
+                    EOF_TRANSMISSION
+                </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full py-8 border-t-2 border-on-surface bg-white">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-6">
+<div class="font-mono text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">
+            © 2024 S.Pfeiffer // Spec_ID: 104-DS-IMG
+        </div>
+<nav class="flex space-x-8 font-mono text-[10px] uppercase font-bold tracking-widest">
+<a class="text-on-surface hover:text-primary transition-colors underline decoration-2 underline-offset-4" href="#">LINKEDIN</a>
+<a class="text-on-surface hover:text-primary transition-colors underline decoration-2 underline-offset-4" href="#">GITHUB</a>
+<a class="text-on-surface hover:text-primary transition-colors underline decoration-2 underline-offset-4" href="#">RESEARCH</a>
+</nav>
+</div>
+</footer>
+
+```</body></html>

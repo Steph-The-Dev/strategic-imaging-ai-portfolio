@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Stephan Pfeiffer - Technical Specification" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script is:inline>
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      } else {
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary selection:text-on-primary">
+    <slot />
+    <script is:inline>
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const themeToggleIcon = document.getElementById('theme-toggle-icon');
+
+      function updateIcon(theme) {
+        if (!themeToggleIcon) return;
+        themeToggleIcon.textContent = theme === 'dark' ? 'light_mode' : 'settings_brightness';
+      }
+
+      updateIcon(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          const newTheme = isDark ? 'light' : 'dark';
+          
+          document.documentElement.classList.remove(isDark ? 'dark' : 'light');
+          document.documentElement.classList.add(newTheme);
+          
+          localStorage.setItem('theme', newTheme);
+          updateIcon(newTheme);
+        });
+      }
+    </script>
+  </body>
+</html>
