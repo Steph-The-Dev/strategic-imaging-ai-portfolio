@@ -1,7 +1,8 @@
 ---
 import CareerPhase from "./CareerPhase.astro";
+import type { Props as CareerPhaseProps } from "./CareerPhase.astro";
 
-const careerPhases: React.ComponentProps<typeof CareerPhase>[] = [
+const careerPhases: CareerPhaseProps[] = [
   {
     id: "MOD_01",
     status: "FOUNDATION_LOCKED",
@@ -28,7 +29,7 @@ const careerPhases: React.ComponentProps<typeof CareerPhase>[] = [
   },
   {
     id: "MOD_04",
-    status: "STATUS_ONGOING",
+    status: "SCHEDULED_09.26",
     statusColor: "primary",
     title: "MSc Applied Info & Data Science",
     description: "HSLU. Converting visual domain expertise into scalable machine learning and engineering models.",
