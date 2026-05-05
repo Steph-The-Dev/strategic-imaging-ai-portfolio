@@ -1,79 +1,251 @@
 ---
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.importance);
 ---
 
-<section class="py-12 md:py-24 bg-surface-container-low dark:bg-slate-950 transition-colors duration-300" id="case-studies">
+<section class="py-12 md:py-32 bg-surface-container-low dark:bg-slate-950 transition-colors duration-300" id="case-studies">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="mb-16 border-l-8 border-primary dark:border-primary-fixed pl-8 transition-colors">
-      <span class="font-mono text-xs md:text-sm text-primary dark:text-primary-fixed font-bold uppercase tracking-[0.4em] mb-3 block">TEST_REPORT_084</span>
-      <h2 class="font-mono font-extrabold text-3xl md:text-5xl text-on-background dark:text-slate-100 uppercase tracking-tighter transition-colors">Stain Normalization</h2>
+    <div class="mb-12 border-l-8 border-primary dark:border-primary-fixed pl-8 transition-colors">
+      <span class="font-mono text-[10px] md:text-sm text-primary dark:text-primary-fixed font-bold uppercase tracking-[0.4em] mb-3 block">TEST_REPORT_084</span>
+      <h2 class="font-mono font-extrabold text-3xl md:text-5xl text-on-background dark:text-slate-100 uppercase tracking-tighter">Project_Console</h2>
     </div>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl transition-colors">
-      <div class="lg:col-span-5 p-8 border-r border-outline-variant dark:border-slate-800 space-y-8 transition-colors">
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] md:text-xs bg-on-background dark:bg-slate-100 text-white dark:text-slate-900 px-2.5 py-1.5 uppercase">PyTorch_v2</span>
-          <span class="font-mono text-[11px] md:text-xs bg-on-background dark:bg-slate-100 text-white dark:text-slate-900 px-2.5 py-1.5 uppercase">CycleGAN_Core</span>
-          <span class="font-mono text-[11px] md:text-xs bg-on-background dark:bg-slate-100 text-white dark:text-slate-900 px-2.5 py-1.5 uppercase">CV_Engine</span>
-        </div>
-        
-        <div class="space-y-4">
-          <p class="font-mono text-sm text-on-surface-variant dark:text-slate-400 leading-relaxed transition-colors">
-            Investigation of domain shift mitigation in clinical histology. Translating color grading principles into generative adversarial architectures.
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-2 gap-px bg-outline-variant dark:bg-slate-800 border border-outline-variant dark:border-slate-800 transition-colors">
-          <div class="bg-surface dark:bg-slate-900 p-4 transition-colors">
-            <div class="font-mono text-2xl font-bold text-primary dark:text-primary-fixed">87%</div>
-            <div class="font-mono text-[10px] md:text-xs uppercase font-bold text-outline dark:text-slate-500">Shift_Reduction</div>
-          </div>
-          <div class="bg-surface dark:bg-slate-900 p-4 transition-colors">
-            <div class="font-mono text-2xl font-bold text-primary dark:text-primary-fixed">+14%</div>
-            <div class="font-mono text-[10px] md:text-xs uppercase font-bold text-outline dark:text-slate-500">Acc_Delta</div>
-          </div>
-        </div>
-        
-        <div class="bg-[#1e1e1e] dark:bg-black p-5 overflow-hidden border border-on-surface dark:border-slate-700 transition-colors">
-          <div class="flex justify-between mb-4 border-b border-white/10 pb-3">
-            <span class="font-mono text-[11px] md:text-xs text-gray-500 uppercase">File: reinhard.py</span>
-            <div class="flex space-x-1.5">
-              <div class="w-2.5 h-2.5 rounded-full bg-red-500/40"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/40"></div>
+
+    <!-- MOBILE VIEW: Precision Accordion (<1024px) -->
+    <div class="lg:hidden space-y-4">
+      {sortedProjects.map((project, index) => (
+        <div class="project-accordion-item border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 overflow-hidden">
+          <button 
+            class="accordion-trigger w-full text-left p-6 flex flex-col items-start gap-2 relative group"
+            data-project-id={project.id}
+          >
+            <div class="font-mono text-[10px] text-primary dark:text-primary-fixed font-bold opacity-60">0{index + 1} // {project.data.reportId}</div>
+            <div class="flex justify-between items-center w-full">
+              <h3 class="font-mono font-bold text-lg text-on-background dark:text-slate-200 uppercase">{project.data.title}</h3>
+              <span class="material-symbols-outlined transition-transform duration-300 group-[.is-open]:rotate-180">expand_more</span>
+            </div>
+          </button>
+          
+          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="p-6 pt-0 space-y-8 border-t border-outline-variant/30 dark:border-slate-800/30">
+              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-6">{project.data.description}</p>
+              
+              <div class="grid grid-cols-2 gap-px bg-outline-variant/30 dark:bg-slate-800/30 border border-outline-variant/30 dark:border-slate-800/30">
+                {project.data.metrics.map(metric => (
+                  <div class="p-4 bg-surface dark:bg-slate-950 transition-colors">
+                    <div class="font-mono text-xl font-bold text-primary dark:text-primary-fixed">{metric.value}</div>
+                    <div class="font-mono text-[9px] uppercase font-bold text-slate-500 mt-1">{metric.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div class="bg-black/90 dark:bg-black p-4 border border-white/5 overflow-hidden transition-colors">
+                <div class="flex justify-between mb-3 border-b border-white/10 pb-2">
+                  <span class="font-mono text-[9px] text-slate-500 uppercase">LOG: {project.data.codeSnippet.filename}</span>
+                </div>
+                <pre class="font-mono text-[10px] text-blue-300 overflow-x-auto whitespace-pre custom-scrollbar"><code>{project.data.codeSnippet.code}</code></pre>
+              </div>
+
+              <div class="bg-black/10 dark:bg-white/5 flex items-center justify-center p-4 min-h-[250px] transition-colors">
+                 <img src={project.data.imageUrl} alt={project.data.title} class="max-w-full max-h-[300px] object-contain border border-white/10 shadow-lg" />
+              </div>
+
+              <div class="pt-4 border-t border-outline-variant/30 dark:border-slate-800/30 flex justify-end">
+                <a href={project.data.githubUrl} target="_blank" class="font-mono text-[10px] font-bold text-secondary dark:text-secondary-fixed uppercase tracking-widest flex items-center gap-2 hover:underline">
+                   <span>EXEC_SOURCE</span>
+                   <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
             </div>
           </div>
-          <pre class="font-mono text-xs md:text-sm font-semibold text-blue-300 overflow-x-auto leading-relaxed"><code>def normalize_stain(src, target):
-    # Transform to Lab for chromatic decoupling
-    src_lab = cv2.cvtColor(src, cv2.COLOR_BGR2LAB).astype(np.float32)
-    tgt_lab = cv2.cvtColor(target, cv2.COLOR_BGR2LAB).astype(np.float32)
+        </div>
+      ))}
+    </div>
 
-    # Statistical matching via masked mean/std
-    s_mu, s_sigma = get_masked_stats(src_lab, mask=s_mask)
-    t_mu, t_sigma = get_masked_stats(tgt_lab, mask=t_mask)
-
-    # Linear scaling and re-integration
-    norm = (src_lab - s_mu) * (t_sigma / s_sigma) + t_mu
-    return cv2.cvtColor(norm.astype(np.uint8), cv2.COLOR_LAB2BGR)</code></pre>
+    <!-- DESKTOP VIEW: Laboratory Console (>=1024px) -->
+    <div class="hidden lg:grid grid-cols-12 gap-0 border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl transition-colors min-h-[800px]">
+      
+      <!-- Sidebar Navigation -->
+      <div class="col-span-4 border-r border-outline-variant dark:border-slate-800 flex flex-col transition-colors overflow-hidden">
+        <div class="p-4 border-b border-outline-variant dark:border-slate-800 bg-surface dark:bg-slate-950 flex items-center justify-between">
+          <span class="font-mono text-[10px] font-bold text-outline dark:text-slate-500 uppercase tracking-widest">Active_Repositories</span>
+          <div class="flex space-x-1">
+            <div class="w-2 h-2 rounded-full bg-primary/40 animate-pulse"></div>
+            <div class="w-2 h-2 rounded-full bg-primary/20"></div>
+          </div>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto custom-scrollbar">
+          {sortedProjects.map((project, index) => (
+            <button 
+              class={`project-nav-btn w-full text-left p-8 border-b border-outline-variant dark:border-slate-800 transition-all duration-300 hover:bg-surface-container-high dark:hover:bg-slate-800 group relative ${index === 0 ? 'is-active bg-surface-container-low dark:bg-slate-900' : ''}`}
+              data-project-id={project.id}
+            >
+              <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 transition-transform duration-300 origin-top group-[.is-active]:scale-y-100"></div>
+              <div class="font-mono text-[10px] text-primary dark:text-primary-fixed font-bold mb-2 opacity-60 group-[.is-active]:opacity-100">0{index + 1} // {project.data.reportId}</div>
+              <h3 class="font-mono font-bold text-xl text-on-background dark:text-slate-200 uppercase leading-tight group-[.is-active]:text-primary dark:group-[.is-active]:text-primary-fixed transition-colors">{project.data.title}</h3>
+              <div class="mt-6 flex flex-wrap gap-2 opacity-40 group-[.is-active]:opacity-100 transition-opacity">
+                {project.data.tags.slice(0, 3).map(tag => (
+                  <span class="font-mono text-[9px] border border-outline dark:border-slate-600 px-1.5 py-0.5 uppercase">{tag}</span>
+                ))}
+              </div>
+            </button>
+          ))}
         </div>
       </div>
-      
-      <div class="lg:col-span-7 p-4 bg-on-background dark:bg-slate-950 relative flex items-center justify-center overflow-hidden transition-colors">
-        <div class="absolute inset-0 opacity-10 technical-grid pointer-events-none"></div>
-        <div class="relative w-full max-w-2xl aspect-[4/3] border border-white/20">
-          <img alt="Microscopic histology slide" class="w-full h-full object-cover" src="/stain_visualization.png"/>
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-1/2 h-full border-r border-white/50 backdrop-contrast-125 backdrop-saturate-150"></div>
+
+      <!-- Detail Display Panel -->
+      <div class="col-span-8 relative bg-on-background dark:bg-slate-950 transition-colors overflow-hidden flex flex-col">
+        <div class="absolute inset-0 opacity-5 technical-grid pointer-events-none"></div>
+        
+        {sortedProjects.map((project, index) => (
+          <div 
+            id={`content-${project.id}`} 
+            class={`project-content-pane absolute inset-0 flex flex-col transition-all duration-500 overflow-y-auto lg:overflow-hidden ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+          >
+            <!-- Details Header -->
+            <div class="p-10 pb-6 space-y-6">
+              <div class="flex flex-wrap gap-2">
+                {project.data.tags.map(tag => (
+                  <span class="font-mono text-[11px] bg-white/10 text-white/80 px-2.5 py-1 uppercase border border-white/10">{tag}</span>
+                ))}
+              </div>
+              <p class="font-mono text-sm text-slate-400 leading-relaxed max-w-2xl">
+                {project.data.description}
+              </p>
+            </div>
+
+            <!-- Metrics Bar -->
+            <div class="grid grid-cols-2 gap-px bg-white/5 border-y border-white/5">
+              {project.data.metrics.map(metric => (
+                <div class="p-8">
+                  <div class="font-mono text-3xl font-bold text-primary-fixed">{metric.value}</div>
+                  <div class="font-mono text-[10px] uppercase font-bold text-slate-500 tracking-widest mt-2">{metric.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Data Probe Area (Code & Image) -->
+            <div class="flex-1 grid grid-cols-1 2xl:grid-cols-2 gap-0 overflow-y-auto 2xl:overflow-hidden">
+              <div class="p-8 border-b 2xl:border-b-0 2xl:border-r border-white/5 bg-black/40 flex flex-col min-h-[300px] 2xl:min-h-0 overflow-hidden">
+                <div class="flex justify-between items-center mb-4 border-b border-white/10 pb-2">
+                  <span class="font-mono text-[10px] text-slate-500 uppercase tracking-tighter flex items-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500/60 mr-2"></span>
+                    LOG_OUTPUT: {project.data.codeSnippet.filename}
+                  </span>
+                </div>
+                <div class="flex-1 overflow-auto custom-scrollbar pr-4">
+                  <pre class="font-mono text-xs text-blue-300 leading-relaxed whitespace-pre"><code>{project.data.codeSnippet.code}</code></pre>
+                </div>
+              </div>
+              
+              <div class="relative bg-black/20 flex items-center justify-center p-8 min-h-[400px] 2xl:min-h-0 overflow-hidden">
+                <img 
+                  src={project.data.imageUrl} 
+                  alt={project.data.title} 
+                  loading="lazy"
+                  class="max-w-full max-h-[350px] 2xl:max-h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
+                />
+                <div class="absolute bottom-4 right-4 flex items-center gap-2">
+                   <a href={project.data.githubUrl} target="_blank" class="bg-secondary px-4 py-2 font-mono text-[10px] font-bold text-white uppercase tracking-widest hover:bg-secondary-container transition-colors shadow-lg">
+                      VIEW_SOURCE
+                   </a>
+                </div>
+                <div class="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.2em]">Visual_Probe_Active</div>
+              </div>
+            </div>
           </div>
-          <div class="absolute bottom-4 left-4 bg-black/80 px-3 py-1.5">
-            <span class="font-mono text-[10px] md:text-xs text-white tracking-widest uppercase">Input: RAW_DATA</span>
-          </div>
-          <div class="absolute bottom-4 right-4 bg-primary px-3 py-1.5">
-            <span class="font-mono text-[10px] md:text-xs text-white tracking-widest uppercase">Output: NORM_SIG</span>
-          </div>
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 border border-white/50 flex items-center justify-center bg-white/10 backdrop-blur-sm">
-            <span class="material-symbols-outlined text-white text-sm">compare_arrows</span>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  function initProjectConsole() {
+    // 1. Desktop Console Logic
+    const navButtons = document.querySelectorAll('.project-nav-btn');
+    const contentPanes = document.querySelectorAll('.project-content-pane');
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const projectId = (btn as HTMLElement).dataset.projectId;
+
+        navButtons.forEach(b => b.classList.remove('is-active', 'bg-surface-container-low', 'dark:bg-slate-900'));
+        btn.classList.add('is-active', 'bg-surface-container-low', 'dark:bg-slate-900');
+
+        contentPanes.forEach(pane => {
+          if (pane.id === `content-${projectId}`) {
+            pane.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
+            pane.classList.add('opacity-100', 'z-10');
+            pane.scrollTop = 0;
+          } else {
+            pane.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+            pane.classList.remove('opacity-100', 'z-10');
+          }
+        });
+      });
+    });
+
+    // 2. Mobile Accordion Logic
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.project-accordion-item');
+        const content = item?.querySelector('.accordion-content') as HTMLElement;
+        const isOpen = trigger.classList.contains('is-open');
+
+        document.querySelectorAll('.project-accordion-item').forEach(otherItem => {
+           if (otherItem !== item) {
+              const otherTrigger = otherItem.querySelector('.accordion-trigger');
+              const otherContent = otherItem.querySelector('.accordion-content') as HTMLElement;
+              if (otherTrigger) otherTrigger.classList.remove('is-open');
+              if (otherContent) otherContent.style.maxHeight = '0px';
+           }
+        });
+
+        if (isOpen) {
+          trigger.classList.remove('is-open');
+          content.style.maxHeight = '0px';
+        } else {
+          trigger.classList.add('is-open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  initProjectConsole();
+  document.addEventListener('astro:after-swap', initProjectConsole);
+</script>
+
+<style>
+  .technical-grid {
+    background-image: 
+      linear-gradient(to right, rgba(0, 99, 153, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 99, 153, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    transition: transform 0.3s ease;
+  }
+</style>

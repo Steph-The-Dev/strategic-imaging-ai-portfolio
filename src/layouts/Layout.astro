@@ -32,7 +32,7 @@ const { title, description = "Stephan Pfeiffer - Technical Specification" } = As
       }
     </script>
   </head>
-  <body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary selection:text-on-primary">
+  <body class="bg-surface dark:bg-slate-950 text-on-surface dark:text-slate-100 font-sans antialiased selection:bg-primary selection:text-on-primary transition-colors duration-300">
     <slot />
     <script is:inline>
       const themeToggleBtn = document.getElementById('theme-toggle');
