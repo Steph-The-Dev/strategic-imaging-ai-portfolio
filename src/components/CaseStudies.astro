@@ -41,14 +41,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                 ))}
               </div>
 
-              <div class="bg-black/90 dark:bg-black p-4 border border-white/5 overflow-hidden transition-colors">
-                <div class="flex justify-between mb-3 border-b border-white/10 pb-2">
-                  <span class="font-mono text-[9px] text-slate-500 uppercase">LOG: {project.data.codeSnippet.filename}</span>
-                </div>
-                <pre class="font-mono text-[10px] text-blue-300 overflow-x-auto whitespace-pre custom-scrollbar"><code>{project.data.codeSnippet.code}</code></pre>
-              </div>
-
-              <div class="bg-black/10 dark:bg-white/5 flex items-center justify-center p-4 min-h-[250px] transition-colors">
+              <div class="bg-black/10 dark:bg-white/5 flex items-center justify-center p-4 min-h-[250px] transition-colors relative overflow-hidden">
                  <Image 
                    src={project.data.imageUrl} 
                    alt={project.data.title} 
@@ -57,6 +50,14 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                    format="webp"
                    class="max-w-full max-h-[300px] object-contain border border-white/10 shadow-lg" 
                  />
+                 <div class="absolute top-2 left-2 font-mono text-[8px] text-white/60 bg-black/40 px-1 uppercase tracking-[0.2em]">Visual_Probe_Active</div>
+              </div>
+
+              <div class="bg-black/90 dark:bg-black p-4 border border-white/5 overflow-hidden transition-colors">
+                <div class="flex justify-between mb-3 border-b border-white/10 pb-2">
+                  <span class="font-mono text-[9px] text-slate-500 uppercase">LOG: {project.data.codeSnippet.filename}</span>
+                </div>
+                <pre class="font-mono text-[10px] text-blue-300 overflow-x-auto whitespace-pre custom-scrollbar"><code>{project.data.codeSnippet.code}</code></pre>
               </div>
 
               <div class="pt-4 border-t border-outline-variant/30 dark:border-slate-800/30 flex justify-end">
@@ -137,26 +138,32 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
             <!-- Data Probe Area (Optimized Split View) -->
             <div class="flex-1 flex flex-col min-h-0">
               <!-- Visual Probe (Top 60%) -->
-              <div class="flex-[3] relative bg-black/20 flex items-center justify-center p-6 border-b border-white/5 min-h-0 overflow-hidden">
-                <Image 
-                  src={project.data.imageUrl} 
-                  alt={project.data.title} 
-                  width={1280}
-                  height={720}
-                  format="webp"
-                  class="max-w-full max-h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
-                />
-                <div class="absolute bottom-4 right-4 flex items-center gap-2">
+              <div class="flex-[3] relative bg-black/20 flex flex-col items-center justify-center p-6 border-b border-white/5 min-h-0 overflow-hidden">
+                <div class="flex-1 flex items-center justify-center min-h-0 w-full relative group">
+                  <Image 
+                    src={project.data.imageUrl} 
+                    alt={project.data.title} 
+                    width={1280}
+                    height={720}
+                    format="webp"
+                    class="max-w-full max-h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
+                  />
+                  <!-- Status Overlay (Brightened) -->
+                  <div class="absolute top-0 left-0 font-mono text-[9px] text-white bg-black/60 px-2 py-0.5 uppercase tracking-[0.2em] border border-white/10">
+                    Visual_Probe_Active
+                  </div>
+                </div>
+                <!-- Action Bar (Below Image to avoid overlap) -->
+                <div class="w-full flex justify-end pt-4">
                    <a href={project.data.githubUrl} target="_blank" class="bg-secondary px-4 py-2 font-mono text-[10px] font-bold text-white uppercase tracking-widest hover:bg-secondary-container transition-colors shadow-lg flex items-center gap-2">
                       <span>VIEW_SOURCE</span>
                       <span class="material-symbols-outlined text-sm">arrow_forward</span>
                    </a>
                 </div>
-                <div class="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.2em]">Visual_Probe_Active</div>
               </div>
 
               <!-- Log Output (Bottom 40%) -->
-              <div class="flex-[2] p-6 bg-black/40 flex flex-col min-h-0">
+              <div class="flex-[2] p-6 bg-black/40 flex flex-col min-h-0 border-t border-white/5">
                 <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
                   <span class="font-mono text-[10px] text-slate-500 uppercase tracking-tighter flex items-center">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500/60 mr-2"></span>
