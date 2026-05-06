@@ -21,6 +21,6 @@ codeSnippet:
             cleaned = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
             return find_contours(cleaned)
 githubUrl: "https://github.com/Steph-The-Dev/surface-defect-detection"
-imageUrl: "/stain_visualization.png"
+imageUrl: "../../assets/Surface-Defect-Detection.png"
 reportId: "SURFACE_QC_LOG"
 ---

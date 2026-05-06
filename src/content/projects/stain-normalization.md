@@ -22,6 +22,6 @@ codeSnippet:
         # Luma preservation and re-composition
         return cv2.cvtColor(res.astype(np.uint8), cv2.COLOR_LAB2BGR)
 githubUrl: "https://github.com/Steph-The-Dev/stain-normalization-project"
-imageUrl: "/stain_visualization.png"
+imageUrl: "../../assets/Stain-Normalization.png"
 reportId: "SPEC_LAB_NORM_01"
 ---

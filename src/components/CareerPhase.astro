@@ -13,7 +13,7 @@ const { id, status, statusColor, title, description, metadata } = Astro.props;
 const colorClasses = {
   green: "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border-green-200 dark:border-green-800",
   blue: "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 border-blue-200 dark:border-blue-800",
-  amber: "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-500 border-amber-200 dark:border-amber-800",
+  amber: "bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-400 border-amber-200 dark:border-amber-800",
   primary: "bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-fixed border-primary/20 dark:border-primary/30",
   slate: "bg-slate-100 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700",
   red: "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 border-red-200 dark:border-red-800",
@@ -29,13 +29,13 @@ const colorClasses = {
   </div>
   <div class="space-y-2">
     <h3 class="font-mono font-bold text-sm leading-tight text-on-background dark:text-slate-100 uppercase transition-colors">{title}</h3>
-    <p class="font-sans text-[13px] text-on-surface-variant dark:text-slate-400 leading-snug transition-colors">{description}</p>
+    <p class="font-sans text-[13px] text-on-surface-variant dark:text-slate-300 leading-snug transition-colors">{description}</p>
   </div>
   <div class="mt-auto pt-4 border-t border-dashed border-outline-variant dark:border-slate-700 transition-colors">
-    <span class="font-mono text-[10px] md:text-xs text-outline dark:text-slate-500 font-bold uppercase mb-2 block">Technical_Metadata:</span>
+    <span class="font-mono text-[10px] md:text-xs text-outline dark:text-slate-400 font-bold uppercase mb-2 block">Technical_Metadata:</span>
     <div class="flex flex-wrap gap-2">
       {metadata.map(tag => (
-        <span class="font-mono text-[11px] md:text-xs text-on-surface dark:text-slate-300 bg-surface-container dark:bg-slate-800 px-2 py-1 border border-outline-variant/30 dark:border-slate-700/50">
+        <span class="font-mono text-[11px] md:text-xs text-on-surface dark:text-slate-200 bg-surface-container dark:bg-slate-800/80 px-2 py-1 border border-outline-variant/30 dark:border-slate-700/50">
           {tag}
         </span>
       ))}

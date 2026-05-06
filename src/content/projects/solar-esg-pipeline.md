@@ -22,6 +22,6 @@ codeSnippet:
             img = self.src.read(window=window)
             return torch.from_numpy(img).float()
 githubUrl: "https://github.com/Steph-The-Dev/solar-esg-pipeline"
-imageUrl: "/hero_geometry.png"
+imageUrl: "../../assets/Solar-ESG-Pipeline.png"
 reportId: "PIPELINE_SYS_S2"
 ---
