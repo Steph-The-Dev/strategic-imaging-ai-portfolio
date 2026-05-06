@@ -81,11 +81,11 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
     </div>
 
     <!-- DESKTOP VIEW: Laboratory Console (>=1024px) -->
-    <div class="hidden lg:grid grid-cols-12 gap-0 border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl transition-colors min-h-[800px]">
+    <div class="hidden lg:grid grid-cols-12 gap-0 border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl transition-colors min-h-[1000px]">
       
       <!-- Sidebar Navigation -->
       <div class="col-span-4 border-r border-outline-variant dark:border-slate-800 flex flex-col transition-colors overflow-hidden">
-        <div class="p-4 border-b border-outline-variant dark:border-slate-800 bg-surface dark:bg-slate-950 flex items-center justify-between">
+        <div class="p-6 border-b border-outline-variant dark:border-slate-800 bg-surface dark:bg-slate-950 flex items-center justify-between">
           <span class="font-mono text-[10px] font-bold text-outline dark:text-slate-500 uppercase tracking-widest">Active_Repositories</span>
           <div class="flex space-x-1">
             <div class="w-2 h-2 rounded-full bg-primary/40 animate-pulse"></div>
@@ -145,11 +145,11 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
 
             <!-- Data Probe Area (Optimized Split View) -->
             <div class="flex-1 flex flex-col min-h-0">
-              <!-- Visual Probe (Top 60%) -->
-              <div class="flex-[3] relative bg-black/20 flex flex-col p-6 border-b border-white/5 min-h-0 overflow-hidden">
+              <!-- Visual Probe (Top 70%) -->
+              <div class="flex-[7] relative bg-black/20 flex flex-col p-8 border-b border-white/5 min-h-0 overflow-hidden">
                 <!-- Internal Header -->
-                <div class="flex justify-between items-center mb-4">
-                  <div class="font-mono text-[9px] text-primary-fixed bg-primary/20 px-2 py-0.5 uppercase tracking-[0.2em] border border-primary/30">
+                <div class="flex justify-between items-center mb-6">
+                  <div class="font-mono text-[9px] text-primary-fixed bg-primary/20 px-3 py-1 uppercase tracking-[0.2em] border border-primary/30">
                     Visual_Probe_Active
                   </div>
                 </div>
@@ -162,21 +162,21 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                     width={1280}
                     height={720}
                     format="webp"
-                    class="max-w-full max-h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
+                    class="w-full h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
                   />
                 </div>
 
                 <!-- Action Bar -->
-                <div class="w-full flex justify-end pt-4">
-                   <a href={project.data.githubUrl} target="_blank" class="bg-secondary px-4 py-2 font-mono text-[10px] font-bold text-white uppercase tracking-widest hover:bg-secondary-container transition-colors shadow-lg flex items-center gap-2">
+                <div class="w-full flex justify-end pt-6">
+                   <a href={project.data.githubUrl} target="_blank" class="bg-secondary px-6 py-3 font-mono text-[11px] font-bold text-white uppercase tracking-widest hover:bg-secondary-container transition-colors shadow-lg flex items-center gap-2">
                       <span>VIEW_SOURCE</span>
                       <span class="material-symbols-outlined text-sm">arrow_forward</span>
                    </a>
                 </div>
               </div>
 
-              <!-- Log Output (Bottom 40%) -->
-              <div class="flex-[2] p-6 bg-black/40 flex flex-col min-h-0 border-t border-white/5">
+              <!-- Log Output (Bottom 30%) -->
+              <div class="flex-[3] p-8 bg-black/40 flex flex-col min-h-0 border-t border-white/5">
                 <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
                   <span class="font-mono text-[10px] text-slate-500 uppercase tracking-tighter flex items-center">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500/60 mr-2"></span>
