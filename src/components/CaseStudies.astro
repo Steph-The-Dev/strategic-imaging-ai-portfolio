@@ -134,17 +134,17 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
               ))}
             </div>
 
-            <!-- Data Probe Area (Stacked Image & Code) -->
-            <div class="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
-              <!-- Visual Probe -->
-              <div class="relative bg-black/20 flex items-center justify-center p-8 border-b border-white/5 min-h-[400px]">
+            <!-- Data Probe Area (Optimized Split View) -->
+            <div class="flex-1 flex flex-col min-h-0">
+              <!-- Visual Probe (Top 60%) -->
+              <div class="flex-[3] relative bg-black/20 flex items-center justify-center p-6 border-b border-white/5 min-h-0 overflow-hidden">
                 <Image 
                   src={project.data.imageUrl} 
                   alt={project.data.title} 
                   width={1280}
                   height={720}
                   format="webp"
-                  class="max-w-full max-h-[500px] object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
+                  class="max-w-full max-h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
                 />
                 <div class="absolute bottom-4 right-4 flex items-center gap-2">
                    <a href={project.data.githubUrl} target="_blank" class="bg-secondary px-4 py-2 font-mono text-[10px] font-bold text-white uppercase tracking-widest hover:bg-secondary-container transition-colors shadow-lg flex items-center gap-2">
@@ -155,16 +155,16 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                 <div class="absolute top-4 left-4 font-mono text-[9px] text-white/20 uppercase tracking-[0.2em]">Visual_Probe_Active</div>
               </div>
 
-              <!-- Log Output -->
-              <div class="p-8 bg-black/40 flex flex-col min-h-[250px]">
-                <div class="flex justify-between items-center mb-4 border-b border-white/10 pb-2">
+              <!-- Log Output (Bottom 40%) -->
+              <div class="flex-[2] p-6 bg-black/40 flex flex-col min-h-0">
+                <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
                   <span class="font-mono text-[10px] text-slate-500 uppercase tracking-tighter flex items-center">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500/60 mr-2"></span>
                     LOG_OUTPUT: {project.data.codeSnippet.filename}
                   </span>
                 </div>
                 <div class="flex-1 overflow-auto custom-scrollbar pr-4">
-                  <pre class="font-mono text-xs text-blue-300 leading-relaxed whitespace-pre"><code>{project.data.codeSnippet.code}</code></pre>
+                  <pre class="font-mono text-[11px] text-blue-300 leading-relaxed whitespace-pre"><code>{project.data.codeSnippet.code}</code></pre>
                 </div>
               </div>
             </div>
