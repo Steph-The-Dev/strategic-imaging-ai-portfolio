@@ -2,6 +2,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
   --color-on-background: #0b1c30;
   --color-error-container: #ffdad6;
