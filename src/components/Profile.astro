@@ -1,0 +1,82 @@
+---
+---
+
+<section class="py-12 md:py-24 bg-surface-container-low dark:bg-slate-950 border-b border-outline-variant dark:border-slate-800 transition-colors duration-300" id="profile">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    
+    <!-- Title Column -->
+    <div class="lg:col-span-4 relative pt-12 lg:pt-16">
+      <!-- Absolute-positioned label sits above the grid alignment point -->
+      <div class="absolute top-0 left-0 inline-flex items-center space-x-2 bg-primary/10 px-3 py-1 border border-primary/20">
+        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+        <span class="font-mono text-[10px] font-bold text-primary uppercase tracking-widest">Operator_Profile</span>
+      </div>
+
+      <!-- Profile Image Module -->
+      <div class="relative group max-w-[280px]">
+        <div class="absolute -inset-2 border border-primary/20 scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 pointer-events-none"></div>
+        <div class="aspect-square bg-slate-200 dark:bg-slate-800 overflow-hidden border-2 border-on-background dark:border-slate-700 relative">
+          <img 
+            src="/operator_profile.jpg" 
+            alt="Operator Profile" 
+            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+          />
+          <!-- Scanline Overlay Effect - Now Fades Out on Hover -->
+          <div class="absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_3px,4px_100%] group-hover:opacity-0 transition-opacity duration-500"></div>
+        </div>
+        <div class="absolute bottom-2 right-2 bg-primary text-white font-mono text-[10px] px-2 py-0.5 uppercase tracking-tighter">
+          ID_CONFIRMED
+        </div>
+      </div>
+
+      <div class="space-y-6 pt-10">
+        <h2 class="font-mono font-extrabold text-3xl md:text-5xl text-on-background dark:text-slate-100 uppercase tracking-tighter leading-[0.9]">
+          The <span class="text-primary">Bridge</span> Builder.
+        </h2>
+        <p class="font-mono text-xs text-on-surface-variant dark:text-slate-400 leading-relaxed italic">
+          "Aligning advanced AI models with rigorous business requirements."
+        </p>
+      </div>
+    </div>
+
+    <!-- Content Column -->
+    <div class="lg:col-span-8 space-y-12 pt-12 lg:pt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <h3 class="font-mono font-bold text-sm text-primary uppercase tracking-wider underline decoration-2 underline-offset-4">Strategic_Interface</h3>
+          <p class="font-sans text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed">
+            Beyond technical implementation, I act as a strategic interface. My background uniquely combines a degree in Business Administration with rigorous technical workflow management. This allows me to align advanced AI models with actual business requirements, particularly within high-stakes domains such as the life sciences, pharmaceuticals, and ESG monitoring.
+          </p>
+        </div>
+        <div class="space-y-4">
+          <h3 class="font-mono font-bold text-sm text-primary uppercase tracking-wider underline decoration-2 underline-offset-4">Data_Integrity</h3>
+          <p class="font-sans text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed">
+            Years of handling massive, unstructured visual data pipelines taught me that a machine learning model is only as good as the signal it receives. My approach heavily prioritizes robust data validation, workflow standardization, and quality assurance, whether standardizing histopathological images or extracting urban footprints from raw satellite data.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tech Stack / Metadata Strip -->
+      <div class="bg-white dark:bg-slate-900 border border-outline-variant dark:border-slate-800 p-6 space-y-6 transition-colors">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div>
+            <span class="block font-mono text-[10px] text-slate-500 uppercase font-bold mb-1">Human_Languages</span>
+            <span class="font-mono text-xs text-on-background dark:text-slate-200">DE (Native), EN (Fluent), ES, PT</span>
+          </div>
+          <div>
+            <span class="block font-mono text-[10px] text-slate-500 uppercase font-bold mb-1">Domain_Expertise</span>
+            <span class="font-mono text-xs text-on-background dark:text-slate-200">Pharma, ESG, Media</span>
+          </div>
+          <div>
+            <span class="block font-mono text-[10px] text-slate-500 uppercase font-bold mb-1">Core_Signal</span>
+            <span class="font-mono text-xs text-on-background dark:text-slate-200">LAB/HSV, GANs, XAI</span>
+          </div>
+          <div>
+            <span class="block font-mono text-[10px] text-slate-500 uppercase font-bold mb-1">Status</span>
+            <span class="font-mono text-xs text-green-600 dark:text-green-400 font-bold uppercase">Ready_for_Deployment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
