@@ -13,8 +13,8 @@
       </div>
 
       <!-- Profile Image Module -->
-      <div class="relative group max-w-[280px]">
-        <div class="absolute -inset-2 border border-primary/20 scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 pointer-events-none"></div>
+      <div class="profile-module relative group max-w-[280px] cursor-pointer">
+        <div class="hover-border absolute -inset-2 border border-primary/20 scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 pointer-events-none"></div>
         <div class="aspect-square bg-slate-200 dark:bg-slate-800 overflow-hidden border-2 border-on-background dark:border-slate-700 relative">
           <img 
             src="/operator_profile.jpg" 
@@ -22,7 +22,7 @@
             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
           />
           <!-- Scanline Overlay Effect - Now Fades Out on Hover -->
-          <div class="absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_3px,4px_100%] group-hover:opacity-0 transition-opacity duration-500"></div>
+          <div class="scanline-overlay absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_3px,4px_100%] group-hover:opacity-0 transition-opacity duration-500"></div>
         </div>
         <div class="absolute bottom-2 right-2 bg-primary text-white font-mono text-[10px] px-2 py-0.5 uppercase tracking-tighter">
           ID_CONFIRMED
@@ -42,17 +42,23 @@
     <!-- Content Column -->
     <div class="lg:col-span-8 space-y-12 pt-12 lg:pt-16">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Strategic Interface -->
         <div class="space-y-4">
-          <h3 class="font-mono font-bold text-sm text-primary uppercase tracking-wider underline decoration-2 underline-offset-4">Strategic_Interface</h3>
-          <p class="font-sans text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed">
-            Beyond technical implementation, I act as a strategic interface. My background uniquely combines a degree in Business Administration with rigorous technical workflow management. This allows me to align advanced AI models with actual business requirements, particularly within high-stakes domains such as the life sciences, pharmaceuticals, and ESG monitoring.
-          </p>
+          <h3 class="font-mono font-bold text-sm text-primary dark:text-primary-fixed uppercase tracking-wider underline decoration-2 underline-offset-4 transition-colors">Strategic_Interface</h3>
+          <div class="font-mono text-sm text-on-surface-variant dark:text-slate-400 border-l-4 border-primary pl-6 py-1 transition-colors">
+            <p class="leading-relaxed">
+              Beyond technical implementation, I act as a strategic interface. My background uniquely combines a degree in Business Administration with rigorous technical workflow management. This allows me to align advanced AI models with actual business requirements, particularly within high-stakes domains such as the life sciences, pharmaceuticals, and ESG monitoring.
+            </p>
+          </div>
         </div>
+        <!-- Data Integrity -->
         <div class="space-y-4">
-          <h3 class="font-mono font-bold text-sm text-primary uppercase tracking-wider underline decoration-2 underline-offset-4">Data_Integrity</h3>
-          <p class="font-sans text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed">
-            Years of handling massive, unstructured visual data pipelines taught me that a machine learning model is only as good as the signal it receives. My approach heavily prioritizes robust data validation, workflow standardization, and quality assurance, whether standardizing histopathological images or extracting urban footprints from raw satellite data.
-          </p>
+          <h3 class="font-mono font-bold text-sm text-primary dark:text-primary-fixed uppercase tracking-wider underline decoration-2 underline-offset-4 transition-colors">Data_Integrity</h3>
+          <div class="font-mono text-sm text-on-surface-variant dark:text-slate-400 border-l-4 border-primary pl-6 py-1 transition-colors">
+            <p class="leading-relaxed">
+              Years of handling massive, unstructured visual data pipelines taught me that a machine learning model is only as good as the signal it receives. My approach heavily prioritizes robust data validation, workflow standardization, and quality assurance, whether standardizing histopathological images or extracting urban footprints from raw satellite data.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -80,3 +86,35 @@
     </div>
   </div>
 </section>
+
+<script>
+  function initProfileInteractivity() {
+    const profileModule = document.querySelector('.profile-module');
+    if (profileModule) {
+      profileModule.addEventListener('click', () => {
+        profileModule.classList.toggle('is-active');
+      });
+    }
+  }
+
+  // Initialize on page load
+  initProfileInteractivity();
+  // Re-initialize after Astro view transitions
+  document.addEventListener('astro:after-swap', initProfileInteractivity);
+</script>
+
+<style>
+  /* Mobile-specific active state for scanline/grayscale toggle */
+  @media (max-width: 1023px) {
+    .profile-module.is-active .scanline-overlay {
+      opacity: 0 !important;
+    }
+    .profile-module.is-active img {
+      filter: grayscale(0) !important;
+    }
+    .profile-module.is-active .hover-border {
+      opacity: 100 !important;
+      transform: scale(1) !important;
+    }
+  }
+</style>
