@@ -16,9 +16,9 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
     <!-- MOBILE VIEW: Precision Accordion (<1024px) -->
     <div class="lg:hidden space-y-4">
       {sortedProjects.map((project, index) => (
-        <div class="project-accordion-item border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 overflow-hidden">
+        <div class={`project-accordion-item border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 overflow-hidden ${index === 0 ? 'is-open' : ''}`}>
           <button 
-            class="accordion-trigger w-full text-left p-6 flex flex-col items-start gap-2 relative group"
+            class={`accordion-trigger w-full text-left p-6 flex flex-col items-start gap-2 relative group ${index === 0 ? 'is-open' : ''}`}
             data-project-id={project.id}
           >
             <div class="font-mono text-[10px] text-primary dark:text-primary-fixed font-bold opacity-60">0{index + 1} // {project.data.reportId}</div>
@@ -28,7 +28,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
             </div>
           </button>
           
-          <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out" style={index === 0 ? "max-height: none;" : "max-height: 0px;"}>
             <div class="p-6 pt-0 space-y-8 border-t border-outline-variant/30 dark:border-slate-800/30">
               <p class="font-mono text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-6">{project.data.description}</p>
               

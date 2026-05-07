@@ -1,7 +1,7 @@
 ---
 title: "Solar ESG Pipeline"
 description: "End-to-end cloud-native ML pipeline for automated building footprint extraction from multi-spectral Sentinel-2 satellite imagery. Bridging the gap between raw optical physics and actionable ESG strategy."
-importance: 3
+importance: 2
 tags: ["Sentinel-2", "PyTorch", "Geospatial", "Pydantic_V2"]
 metrics:
   - label: "Data_Handling"

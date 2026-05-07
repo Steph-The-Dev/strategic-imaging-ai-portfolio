@@ -1,7 +1,7 @@
 ---
 title: "Stain Normalization"
 description: "A computer vision suite for normalizing H&E whole-slide images and scanner video feeds. Uses smart tissue masking and Luma preservation to eliminate laboratory color variations while maintaining natural micro-contrast."
-importance: 2
+importance: 3
 tags: ["Reinhard", "OpenCV", "Digital_Pathology", "PyTest"]
 metrics:
   - label: "Latency"
