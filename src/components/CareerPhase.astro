@@ -22,17 +22,22 @@ const colorClasses = {
 };
 ---
 
-<div class="bg-white dark:bg-slate-900 p-6 space-y-6 flex flex-col h-full transition-colors">
-  <div class="flex justify-between items-start">
+<div class="bg-white dark:bg-slate-900 p-6 grid grid-rows-subgrid row-span-4 transition-colors h-full">
+  <!-- Row 1: ID and Status -->
+  <div class="flex justify-between items-start self-start">
     <span class="font-mono text-xs md:text-sm font-bold text-primary dark:text-primary-fixed">{id}</span>
     <span class={`font-mono text-[10px] md:text-xs px-2 py-1 border ${colorClasses[statusColor]}`}>{status}</span>
   </div>
-  <div class="space-y-2">
-    <h3 class="font-mono font-bold text-sm leading-tight text-on-background dark:text-slate-100 uppercase transition-colors">{title}</h3>
-    <p class="font-sans text-[13px] text-on-surface-variant dark:text-slate-300 leading-snug transition-colors">{description}</p>
-  </div>
-  <div class="mt-auto pt-4 border-t border-dashed border-outline-variant dark:border-slate-700 transition-colors">
-    <span class="font-mono text-[10px] md:text-xs text-outline dark:text-slate-400 font-bold uppercase mb-2 block">Technical_Metadata:</span>
+
+  <!-- Row 2: Title (Top Aligned) -->
+  <h3 class="font-mono font-bold text-sm leading-tight text-on-background dark:text-slate-100 uppercase transition-colors self-start py-4">{title}</h3>
+
+  <!-- Row 3: Description (Mono + Padding) -->
+  <p class="font-mono text-[13px] text-on-surface-variant dark:text-slate-400 leading-snug transition-colors self-start pb-10">{description}</p>
+
+  <!-- Row 4: Metadata (Bottom Aligned) -->
+  <div class="mt-auto pt-4 border-t border-dashed border-outline-variant dark:border-slate-700 transition-colors self-end">
+    <span class="font-mono text-[10px] md:text-xs text-outline dark:text-slate-300 font-bold uppercase mb-2 block">Technical_Metadata:</span>
     <div class="flex flex-wrap gap-2">
       {metadata.map(tag => (
         <span class="font-mono text-[11px] md:text-xs text-on-surface dark:text-slate-200 bg-surface-container dark:bg-slate-800/80 px-2 py-1 border border-outline-variant/30 dark:border-slate-700/50">
