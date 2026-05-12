@@ -19,6 +19,11 @@ const projects = defineCollection({
     githubUrl: z.string().url(),
     imageUrl: image(),
     reportId: z.string(), // e.g. "TEST_REPORT_084"
+    techStack: z.object({
+      engine: z.array(z.string()),
+      engineering: z.array(z.string()),
+      delivery: z.array(z.string()),
+    }),
   }),
 });
 

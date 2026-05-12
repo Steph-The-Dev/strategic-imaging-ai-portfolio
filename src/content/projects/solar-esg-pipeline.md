@@ -24,4 +24,8 @@ codeSnippet:
 githubUrl: "https://github.com/Steph-The-Dev/solar-esg-pipeline"
 imageUrl: "../../assets/Solar-ESG-Pipeline.png"
 reportId: "PIPELINE_SYS_S2"
+techStack:
+  engine: ["PyTorch", "Rasterio", "Albumentations"]
+  engineering: ["Pydantic V2", "GitHub Actions", "Mamba"]
+  delivery: ["Cloud-Native", "GeoTIFF", "OSMnx"]
 ---

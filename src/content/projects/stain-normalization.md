@@ -24,4 +24,8 @@ codeSnippet:
 githubUrl: "https://github.com/Steph-The-Dev/stain-normalization-project"
 imageUrl: "../../assets/Stain-Normalization.png"
 reportId: "SPEC_LAB_NORM_01"
+techStack:
+  engine: ["OpenCV", "NumPy", "CIELAB Physics"]
+  engineering: ["PyTest", "Modular Architecture", "Reproducibility"]
+  delivery: ["Streamlit", "Digital Pathology", "WSI"]
 ---

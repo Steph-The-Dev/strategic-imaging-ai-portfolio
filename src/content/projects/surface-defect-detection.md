@@ -23,4 +23,8 @@ codeSnippet:
 githubUrl: "https://github.com/Steph-The-Dev/surface-defect-detection"
 imageUrl: "../../assets/Surface-Defect-Detection.png"
 reportId: "SURFACE_QC_LOG"
+techStack:
+  engine: ["OpenCV", "NumPy", "Morphology"]
+  engineering: ["Mypy (Strict)", "Strategy Pattern", "Ruff"]
+  delivery: ["Streamlit PoC", "Real-time Inspection", "Makefile Automation"]
 ---
