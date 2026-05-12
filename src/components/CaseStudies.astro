@@ -154,18 +154,18 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
               </div>
             </div>
 
-            <!-- Metrics Bar (Refined & Compact) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border-y border-white/5">
+            <!-- Metrics Bar (Compact 2-Column) -->
+            <div class="grid grid-cols-2 gap-px bg-white/10 border-y border-white/10">
               {project.data.metrics.map(metric => (
-                <div class="p-6">
-                  <div class="font-mono text-xl font-bold text-primary-fixed leading-none">{metric.value}</div>
-                  <div class="font-mono text-[9px] uppercase font-bold text-slate-500 tracking-widest mt-1.5">{metric.label}</div>
+                <div class="px-8 py-4 bg-on-background dark:bg-slate-950">
+                  <div class="font-mono text-lg font-bold text-primary-fixed leading-none">{metric.value}</div>
+                  <div class="font-mono text-[8px] uppercase font-bold text-slate-500 tracking-widest mt-1">{metric.label}</div>
                 </div>
               ))}
             </div>
 
             <!-- Data Probe Area (Enhanced Vertical Space) -->
-            <div class="flex-1 flex flex-col min-h-0">
+            <div class="flex-1 flex flex-col min-h-0 bg-on-background dark:bg-slate-950">
               <!-- Visual Probe (Primary Focus) -->
               <div class="flex-[10] relative bg-black/20 flex flex-col p-8 border-b border-white/5 min-h-[500px] overflow-hidden">
                 <!-- Internal Header -->
@@ -175,7 +175,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                   </div>
                 </div>
                 
-                <!-- Image Container (Expanded) -->
+                <!-- Image Container (Expanded & Aspect Ratio Preserved) -->
                 <div class="flex-1 flex items-center justify-center min-h-0 w-full relative group">
                   <Image 
                     src={project.data.imageUrl} 
@@ -183,7 +183,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                     width={1920}
                     height={1080}
                     format="webp"
-                    class="w-full h-full object-cover transition-all duration-700 opacity-90 hover:opacity-100 shadow-2xl"
+                    class="w-full h-full object-contain transition-all duration-700 opacity-90 hover:opacity-100"
                   />
                   <div class="absolute inset-0 border border-white/10 pointer-events-none"></div>
                 </div>
