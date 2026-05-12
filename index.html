@@ -1,14 +1,15 @@
-<html class="light" lang="en"><head></head><body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary selection:text-on-primary">```html
-
-
-
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Stephan Pfeiffer - Technical Specification</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Stephan Pfeiffer - Technical Specification</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -76,7 +77,8 @@
             }
         }
     </script>
-<style type="text/tailwindcss">
+
+    <style type="text/tailwindcss">
         .technical-grid {
             background-image: 
                 linear-gradient(to right, rgba(0, 99, 153, 0.05) 1px, transparent 1px),
@@ -92,6 +94,28 @@
             text-transform: uppercase;
         }
     </style>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.www.stephthedev.de"]);
+      _paq.push(["setDomains", ["*.www.stephthedev.de"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//schneidenundfaerben.de/matomo/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//schneidenundfaerben.de/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Matomo Code -->
+</head>
+<body class="bg-surface text-on-surface font-sans antialiased selection:bg-primary selection:text-on-primary">
 
 
 <header class="fixed top-0 w-full z-50 bg-white border-b-2 border-on-surface transition-all duration-300">
