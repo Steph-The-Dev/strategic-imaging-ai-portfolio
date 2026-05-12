@@ -77,19 +77,19 @@ import operatorProfile from '../assets/operator_profile.jpg';
         </p>
         
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 relative z-10">
-          <div class="space-y-2">
-            <span class="block font-mono text-[9px] text-slate-500 uppercase font-bold tracking-tighter">Core_Engines</span>
+          <div class="space-y-3">
+            <span class="block font-mono text-[9px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tighter">Core_Engines</span>
             <div class="flex flex-wrap gap-2">
-              {["PyTorch", "OpenCV", "NumPy", "Rasterio"].map(tech => (
-                <span class="font-mono text-[10px] px-2 py-0.5 border border-primary/20 dark:border-white/10 text-primary dark:text-slate-300">{tech}</span>
+              {["PyTorch", "OpenCV", "NumPy", "Rasterio", "Matplotlib", "Seaborn"].map(tech => (
+                <span class="font-mono text-[10px] font-bold px-2.5 py-1 bg-secondary/10 dark:bg-secondary/20 border border-secondary/30 dark:border-secondary/40 text-secondary-container dark:text-secondary-fixed-dim hover:bg-secondary hover:text-white transition-colors cursor-default uppercase">{tech}</span>
               ))}
             </div>
           </div>
-          <div class="space-y-2">
-            <span class="block font-mono text-[9px] text-slate-500 uppercase font-bold tracking-tighter">Architecture_&_Ops</span>
+          <div class="space-y-3">
+            <span class="block font-mono text-[9px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-tighter">Architecture_&_Ops</span>
             <div class="flex flex-wrap gap-2">
               {["Pydantic V2", "Mypy (Strict)", "GitHub Actions", "Streamlit"].map(tech => (
-                <span class="font-mono text-[10px] px-2 py-0.5 border border-primary/20 dark:border-white/10 text-primary dark:text-slate-300">{tech}</span>
+                <span class="font-mono text-[10px] font-bold px-2.5 py-1 bg-secondary/10 dark:bg-secondary/20 border border-secondary/30 dark:border-secondary/40 text-secondary-container dark:text-secondary-fixed-dim hover:bg-secondary hover:text-white transition-colors cursor-default uppercase">{tech}</span>
               ))}
             </div>
           </div>
