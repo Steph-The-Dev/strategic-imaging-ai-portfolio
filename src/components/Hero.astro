@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import heroGeometry from '../assets/hero_geometry.png';
 ---
 
 <section class="relative border-b border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 technical-grid transition-colors duration-300">
@@ -30,7 +32,13 @@
         <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary translate-x-1 -translate-y-1"></div>
         <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary -translate-x-1 translate-y-1"></div>
         <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary translate-x-1 translate-y-1"></div>
-        <img alt="Abstract macro clinical image" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="/hero_geometry.png"/>
+        <Image 
+          src={heroGeometry} 
+          alt="Abstract macro clinical image" 
+          class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+          loading="eager"
+          fetchpriority="high"
+        />
         <div class="absolute top-1/2 left-0 w-full h-[1px] bg-primary/20 pointer-events-none"></div>
         <div class="absolute top-0 left-1/2 h-full w-[1px] bg-primary/20 pointer-events-none"></div>
       </div>
