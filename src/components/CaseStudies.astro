@@ -140,34 +140,34 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-l border-white/10 pl-6 py-2">
                   <div class="space-y-1">
                     <div class="font-mono text-[9px] text-slate-500 uppercase tracking-tighter">Core_Engine</div>
-                    <div class="font-mono text-[11px] text-slate-300">{project.data.techStack.engine.join(', ')}</div>
+                    <div class="font-mono text-[11px] text-slate-300">{project.data.techStack?.engine?.join(', ') || 'N/A'}</div>
                   </div>
                   <div class="space-y-1">
                     <div class="font-mono text-[9px] text-slate-500 uppercase tracking-tighter">Engineering</div>
-                    <div class="font-mono text-[11px] text-slate-300">{project.data.techStack.engineering.join(', ')}</div>
+                    <div class="font-mono text-[11px] text-slate-300">{project.data.techStack?.engineering?.join(', ') || 'N/A'}</div>
                   </div>
                   <div class="space-y-1">
                     <div class="font-mono text-[9px] text-slate-500 uppercase tracking-tighter">Delivery</div>
-                    <div class="font-mono text-[11px] text-slate-300">{project.data.techStack.delivery.join(', ')}</div>
+                    <div class="font-mono text-[11px] text-slate-300">{project.data.techStack?.delivery?.join(', ') || 'N/A'}</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Metrics Bar -->
-            <div class="grid grid-cols-2 gap-px bg-white/5 border-y border-white/5">
+            <!-- Metrics Bar (Refined & Compact) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 border-y border-white/5">
               {project.data.metrics.map(metric => (
-                <div class="p-8">
-                  <div class="font-mono text-3xl font-bold text-primary-fixed">{metric.value}</div>
-                  <div class="font-mono text-[10px] uppercase font-bold text-slate-500 tracking-widest mt-2">{metric.label}</div>
+                <div class="p-6">
+                  <div class="font-mono text-xl font-bold text-primary-fixed leading-none">{metric.value}</div>
+                  <div class="font-mono text-[9px] uppercase font-bold text-slate-500 tracking-widest mt-1.5">{metric.label}</div>
                 </div>
               ))}
             </div>
 
-            <!-- Data Probe Area (Optimized Split View) -->
+            <!-- Data Probe Area (Enhanced Vertical Space) -->
             <div class="flex-1 flex flex-col min-h-0">
-              <!-- Visual Probe (Top 70%) -->
-              <div class="flex-[7] relative bg-black/20 flex flex-col p-8 border-b border-white/5 min-h-0 overflow-hidden">
+              <!-- Visual Probe (Primary Focus) -->
+              <div class="flex-[10] relative bg-black/20 flex flex-col p-8 border-b border-white/5 min-h-[500px] overflow-hidden">
                 <!-- Internal Header -->
                 <div class="flex justify-between items-center mb-6">
                   <div class="font-mono text-[9px] text-primary-fixed bg-primary/20 px-3 py-1 uppercase tracking-[0.2em] border border-primary/30">
@@ -175,16 +175,17 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                   </div>
                 </div>
                 
-                <!-- Image Container -->
+                <!-- Image Container (Expanded) -->
                 <div class="flex-1 flex items-center justify-center min-h-0 w-full relative group">
                   <Image 
                     src={project.data.imageUrl} 
                     alt={project.data.title} 
-                    width={1280}
-                    height={720}
+                    width={1920}
+                    height={1080}
                     format="webp"
-                    class="w-full h-full object-contain transition-all duration-700 opacity-80 hover:opacity-100 shadow-2xl"
+                    class="w-full h-full object-cover transition-all duration-700 opacity-90 hover:opacity-100 shadow-2xl"
                   />
+                  <div class="absolute inset-0 border border-white/10 pointer-events-none"></div>
                 </div>
 
                 <!-- Action Bar -->
@@ -196,8 +197,8 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                 </div>
               </div>
 
-              <!-- Log Output (Bottom 30%) -->
-              <div class="flex-[3] p-8 bg-black/40 flex flex-col min-h-0 border-t border-white/5">
+              <!-- Log Output (Secondary) -->
+              <div class="flex-[3] p-8 bg-black/40 flex flex-col min-h-[200px] border-t border-white/5">
                 <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
                   <span class="font-mono text-[10px] text-slate-500 uppercase tracking-tighter flex items-center">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500/60 mr-2"></span>
