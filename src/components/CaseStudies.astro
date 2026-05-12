@@ -16,26 +16,26 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
     <!-- MOBILE VIEW: Precision Accordion (<1024px) -->
     <div class="lg:hidden space-y-4">
       {sortedProjects.map((project, index) => (
-        <div class={`project-accordion-item border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 overflow-hidden ${index === 0 ? 'is-open' : ''}`}>
+        <div class={`project-accordion-item border border-outline-variant dark:border-slate-800 bg-on-background dark:bg-slate-950 transition-all duration-300 overflow-hidden ${index === 0 ? 'is-open' : ''}`}>
           <button 
-            class={`accordion-trigger w-full text-left p-6 flex flex-col items-start gap-2 relative group ${index === 0 ? 'is-open' : ''}`}
+            class={`accordion-trigger w-full text-left p-6 flex flex-col items-start gap-2 relative group bg-on-background dark:bg-slate-900 ${index === 0 ? 'is-open' : ''}`}
             data-project-id={project.id}
           >
-            <div class="font-mono text-[10px] text-primary dark:text-primary-fixed font-bold opacity-60">0{index + 1} // {project.data.reportId}</div>
+            <div class="font-mono text-[10px] text-primary-fixed dark:text-primary-fixed font-bold opacity-60">0{index + 1} // {project.data.reportId}</div>
             <div class="flex justify-between items-center w-full">
-              <h3 class="font-mono font-bold text-lg text-on-background dark:text-slate-200 uppercase">{project.data.title}</h3>
-              <span class="material-symbols-outlined transition-transform duration-300 group-[.is-open]:rotate-180">expand_more</span>
+              <h3 class="font-mono font-bold text-lg text-white dark:text-slate-200 uppercase">{project.data.title}</h3>
+              <span class="material-symbols-outlined text-white transition-transform duration-300 group-[.is-open]:rotate-180">expand_more</span>
             </div>
           </button>
           
-          <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out" style={index === 0 ? "max-height: none;" : "max-height: 0px;"}>
-            <div class="p-6 pt-0 space-y-8 border-t border-outline-variant/30 dark:border-slate-800/30">
-              <p class="font-mono text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-6">{project.data.description}</p>
+          <div class="accordion-content overflow-hidden transition-all duration-500 ease-in-out bg-on-background dark:bg-slate-950" style={index === 0 ? "max-height: none;" : "max-height: 0px;"}>
+            <div class="p-6 pt-0 space-y-8 border-t border-white/10">
+              <p class="font-mono text-xs text-slate-400 dark:text-slate-400 leading-relaxed mt-6">{project.data.description}</p>
               
-              <div class="grid grid-cols-2 gap-px bg-outline-variant/30 dark:bg-slate-800/30 border border-outline-variant/30 dark:border-slate-800/30">
+              <div class="grid grid-cols-2 gap-px bg-primary/20 dark:bg-primary/40 border border-primary/20 dark:border-primary/40">
                 {project.data.metrics.map(metric => (
-                  <div class="p-4 bg-surface dark:bg-slate-950 transition-colors">
-                    <div class="font-mono text-xl font-bold text-primary dark:text-primary-fixed">{metric.value}</div>
+                  <div class="p-4 bg-on-background dark:bg-slate-900 transition-colors">
+                    <div class="font-mono text-xl font-bold text-primary-fixed">{metric.value}</div>
                     <div class="font-mono text-[9px] uppercase font-bold text-slate-500 mt-1">{metric.label}</div>
                   </div>
                 ))}
@@ -44,24 +44,24 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
               <!-- Visual Probe Container -->
               <div class="space-y-2">
                 <div class="flex justify-between items-center">
-                  <div class="font-mono text-[9px] text-primary dark:text-primary-fixed bg-primary/10 px-2 py-0.5 uppercase tracking-[0.2em] border border-primary/20">
+                  <div class="font-mono text-[9px] text-primary-fixed bg-primary/20 px-2 py-0.5 uppercase tracking-[0.2em] border border-primary/30">
                     Visual_Probe_Active
                   </div>
                 </div>
-                <div class="bg-black/10 dark:bg-white/5 flex items-center justify-center p-4 min-h-[250px] transition-colors relative overflow-hidden">
+                <div class="bg-black/20 flex items-center justify-center p-4 min-h-[250px] transition-colors relative overflow-hidden border border-white/10">
                    <Image 
                      src={project.data.imageUrl} 
                      alt={project.data.title} 
                      width={800} 
                      height={450} 
                      format="webp"
-                     class="max-w-full max-h-[300px] object-contain border border-white/10 shadow-lg" 
+                     class="max-w-full max-h-[300px] object-contain opacity-90 shadow-lg" 
                    />
                 </div>
               </div>
 
               <!-- Log Output -->
-              <div class="bg-black/90 dark:bg-black p-4 border border-white/5 overflow-hidden transition-colors">
+              <div class="bg-black/40 p-4 border border-white/5 overflow-hidden transition-colors">
                 <div class="flex justify-between mb-3 border-b border-white/10 pb-2">
                   <span class="font-mono text-[9px] text-slate-500 uppercase">LOG: {project.data.codeSnippet.filename}</span>
                 </div>
@@ -81,10 +81,10 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
     </div>
 
     <!-- DESKTOP VIEW: Laboratory Console (>=1024px) -->
-    <div class="hidden lg:grid grid-cols-12 gap-0 border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl transition-colors min-h-[1000px]">
+    <div class="hidden lg:grid grid-cols-12 gap-0 border border-outline-variant dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl transition-colors">
       
       <!-- Sidebar Navigation -->
-      <div class="col-span-4 border-r border-outline-variant dark:border-slate-800 flex flex-col transition-colors overflow-hidden">
+      <div class="col-span-4 border-r border-outline-variant dark:border-slate-800 flex flex-col transition-colors overflow-hidden sticky top-24 self-start max-h-[calc(100vh-6rem)]">
         <div class="p-6 border-b border-outline-variant dark:border-slate-800 bg-surface dark:bg-slate-950 flex items-center justify-between">
           <span class="font-mono text-[10px] font-bold text-outline dark:text-slate-500 uppercase tracking-widest">Active_Repositories</span>
           <div class="flex space-x-1">
@@ -113,13 +113,13 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
       </div>
 
       <!-- Detail Display Panel -->
-      <div class="col-span-8 relative bg-on-background dark:bg-slate-950 transition-colors overflow-hidden flex flex-col">
+      <div class="col-span-8 relative bg-on-background dark:bg-slate-950 transition-colors flex flex-col min-h-0">
         <div class="absolute inset-0 opacity-5 technical-grid pointer-events-none"></div>
         
         {sortedProjects.map((project, index) => (
           <div 
             id={`content-${project.id}`} 
-            class={`project-content-pane absolute inset-0 flex flex-col transition-all duration-500 overflow-y-auto lg:overflow-hidden ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}
+            class={`project-content-pane flex flex-col transition-all duration-500 ${index === 0 ? 'relative opacity-100 z-10' : 'absolute top-0 left-0 w-full opacity-0 z-0 pointer-events-none'}`}
           >
             <!-- Details Header -->
             <div class="p-10 pb-6 space-y-6">
@@ -154,20 +154,20 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
               </div>
             </div>
 
-            <!-- Metrics Bar (Compact 2-Column) -->
-            <div class="grid grid-cols-2 gap-px bg-white/10 border-y border-white/10">
-              {project.data.metrics.map(metric => (
-                <div class="px-8 py-4 bg-on-background dark:bg-slate-950">
-                  <div class="font-mono text-lg font-bold text-primary-fixed leading-none">{metric.value}</div>
-                  <div class="font-mono text-[8px] uppercase font-bold text-slate-500 tracking-widest mt-1">{metric.label}</div>
+            <!-- Metrics Bar (Aligned & Standout) -->
+            <div class="grid grid-cols-2 bg-on-background dark:bg-slate-950 border-y border-white/10">
+              {project.data.metrics.map((metric, idx) => (
+                <div class={`px-10 py-8 hover:bg-slate-900 transition-colors group ${idx % 2 === 0 ? 'border-r border-white/5' : ''}`}>
+                  <div class="font-mono text-3xl font-bold text-primary-fixed leading-none group-hover:scale-105 transition-transform origin-left">{metric.value}</div>
+                  <div class="font-mono text-[10px] uppercase font-bold text-slate-500 tracking-widest mt-2">{metric.label}</div>
                 </div>
               ))}
             </div>
 
-            <!-- Data Probe Area (Enhanced Vertical Space) -->
-            <div class="flex-1 flex flex-col min-h-0 bg-on-background dark:bg-slate-950">
-              <!-- Visual Probe (Primary Focus) -->
-              <div class="flex-[10] relative bg-black/20 flex flex-col p-8 border-b border-white/5 min-h-[500px] overflow-hidden">
+            <!-- Data Probe Area -->
+            <div class="flex-none flex flex-col bg-on-background dark:bg-slate-950">
+              <!-- Visual Probe -->
+              <div class="relative bg-black/20 flex flex-col p-10 border-b border-white/5 min-h-[500px] overflow-hidden">
                 <!-- Internal Header -->
                 <div class="flex justify-between items-center mb-6">
                   <div class="font-mono text-[9px] text-primary-fixed bg-primary/20 px-3 py-1 uppercase tracking-[0.2em] border border-primary/30">
@@ -175,7 +175,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                   </div>
                 </div>
                 
-                <!-- Image Container (Expanded & Aspect Ratio Preserved) -->
+                <!-- Image Container -->
                 <div class="flex-1 flex items-center justify-center min-h-0 w-full relative group">
                   <Image 
                     src={project.data.imageUrl} 
@@ -197,17 +197,15 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                 </div>
               </div>
 
-              <!-- Log Output (Secondary) -->
-              <div class="flex-[3] p-8 bg-black/40 flex flex-col min-h-[200px] border-t border-white/5">
+              <!-- Log Output (Expanded) -->
+              <div class="p-10 bg-black/40 flex flex-col border-t border-white/5">
                 <div class="flex justify-between items-center mb-3 border-b border-white/10 pb-2">
                   <span class="font-mono text-[10px] text-slate-500 uppercase tracking-tighter flex items-center">
                     <span class="w-1.5 h-1.5 rounded-full bg-green-500/60 mr-2"></span>
                     LOG_OUTPUT: {project.data.codeSnippet.filename}
                   </span>
                 </div>
-                <div class="flex-1 overflow-auto custom-scrollbar pr-4">
-                  <pre class="font-mono text-[11px] text-blue-300 leading-relaxed whitespace-pre"><code>{project.data.codeSnippet.code}</code></pre>
-                </div>
+                <pre class="font-mono text-[11px] text-blue-300 leading-relaxed whitespace-pre overflow-x-auto custom-scrollbar"><code>{project.data.codeSnippet.code}</code></pre>
               </div>
             </div>
           </div>
@@ -219,7 +217,6 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
 
 <script>
   function initProjectConsole() {
-    // 1. Desktop Console Logic
     const navButtons = document.querySelectorAll('.project-nav-btn');
     const contentPanes = document.querySelectorAll('.project-content-pane');
 
@@ -232,20 +229,18 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
 
         contentPanes.forEach(pane => {
           if (pane.id === `content-${projectId}`) {
-            pane.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
-            pane.classList.add('opacity-100', 'z-10');
-            pane.scrollTop = 0;
+            pane.classList.remove('opacity-0', 'z-0', 'pointer-events-none', 'absolute', 'top-0', 'left-0', 'w-full');
+            pane.classList.add('opacity-100', 'z-10', 'relative');
           } else {
-            pane.classList.add('opacity-0', 'z-0', 'pointer-events-none');
-            pane.classList.remove('opacity-100', 'z-10');
+            pane.classList.add('opacity-0', 'z-0', 'pointer-events-none', 'absolute', 'top-0', 'left-0', 'w-full');
+            pane.classList.remove('opacity-100', 'z-10', 'relative');
           }
         });
       });
     });
 
-    // 2. Mobile Accordion Logic
+    // Mobile Accordion Logic
     const accordionTriggers = document.querySelectorAll('.accordion-trigger');
-
     accordionTriggers.forEach(trigger => {
       trigger.addEventListener('click', () => {
         const item = trigger.closest('.project-accordion-item');
