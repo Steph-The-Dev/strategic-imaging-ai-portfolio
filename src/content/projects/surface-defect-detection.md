@@ -1,6 +1,6 @@
 ---
 title: "Surface Defect Detection"
-description: "Automated quality inspection tool for metallic surfaces. Utilizes an object-oriented vision pipeline with swappable thresholding strategies to handle complex reflections and uneven lighting."
+description: "An automated quality control tool for industrial metal surfaces. The system uses advanced vision algorithms to detect surface flaws in real-time, even under difficult lighting and complex reflections."
 importance: 1
 tags: ["Strategy_Pattern", "Morphology", "Adaptive_Thresh", "Mypy"]
 metrics:

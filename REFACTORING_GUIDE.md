@@ -59,11 +59,15 @@ This document serves as the Source of Truth for the portfolio's copy. It capture
 
 ### Example: Stain Normalization
 - **Original Description:** `A computer vision suite for normalizing H&E whole-slide images... eliminates laboratory color variations while maintaining natural micro-contrast.`
-- **Original Label:** `Report ID: SPEC_LAB_NORM_01`
+- **Hybrid Alternative:** "A specialized tool for standardizing medical histology images. It removes color inconsistencies caused by different lab environments, ensuring AI diagnostic models remain accurate and reliable."
 
-### Hybrid Alternative
-- **Description:** "A specialized tool for standardizing medical histology images. It removes color inconsistencies caused by different lab environments, ensuring AI diagnostic models remain accurate and reliable."
-- **Label:** (Keep the ID for style, but add a human subtitle): `Project Alpha: Medical Image Standardization`
+### Example: Solar ESG Pipeline
+- **Original Description:** `End-to-end cloud-native ML pipeline for automated building footprint extraction from multi-spectral Sentinel-2 satellite imagery. Bridging the gap between raw optical physics and actionable ESG strategy.`
+- **Hybrid Alternative:** "A cloud-based machine learning pipeline that automatically identifies building footprints from satellite data. It converts complex multi-spectral imagery into clear, actionable insights for ESG and sustainability monitoring."
+
+### Example: Surface Defect Detection
+- **Original Description:** `Automated quality inspection tool for metallic surfaces. Utilizes an object-oriented vision pipeline with swappable thresholding strategies to handle complex reflections and uneven lighting.`
+- **Hybrid Alternative:** "An automated quality control tool for industrial metal surfaces. The system uses advanced vision algorithms to detect surface flaws in real-time, even under difficult lighting and complex reflections."
 
 ---
 
