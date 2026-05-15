@@ -4,7 +4,7 @@
 
 A highly modular, high-performance professional portfolio built with [Astro](https://astro.build/) and [Tailwind CSS v4](https://tailwindcss.com/). 
 
-This project serves as the technical specification and interactive resume for **Stephan Pfeiffer**. It showcases the strategic convergence of 20 years of visual domain expertise (TV Editor & Colorist) with modern applied data science and machine learning architectures.
+This project serves as the portfolio for **Stephan Pfeiffer**, acting as a **Visual Systems Architect**. It showcases the strategic convergence of 20 years of visual domain expertise (TV Editor & Colorist) with modern applied data science and machine learning architectures.
 
 ## ✨ Key Features
 
