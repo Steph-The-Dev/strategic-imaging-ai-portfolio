@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
+import StainComparison from './StainComparison.astro';
 
 const projects = await getCollection('projects');
 const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.importance);
@@ -48,16 +49,22 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                     Visual_Probe_Active
                   </div>
                 </div>
-                <div class="bg-black/20 flex items-center justify-center p-4 min-h-[250px] transition-colors relative overflow-hidden border border-white/10">
-                   <Image 
-                     src={project.data.imageUrl} 
-                     alt={project.data.title} 
-                     width={800} 
-                     height={450} 
-                     format="webp"
-                     class="max-w-full max-h-[300px] object-contain opacity-90 shadow-lg" 
-                   />
-                </div>
+                {project.id === 'stain-normalization' ? (
+                  <div class="bg-black/20 p-4 transition-colors relative overflow-hidden border border-white/10">
+                    <StainComparison />
+                  </div>
+                ) : (
+                  <div class="bg-black/20 flex items-center justify-center p-4 min-h-[250px] transition-colors relative overflow-hidden border border-white/10">
+                    <Image 
+                      src={project.data.imageUrl} 
+                      alt={project.data.title} 
+                      width={800} 
+                      height={450} 
+                      format="webp"
+                      class="max-w-full max-h-[300px] object-contain opacity-90 shadow-lg" 
+                    />
+                  </div>
+                )}
               </div>
 
               <!-- Log Output -->
@@ -190,18 +197,23 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                   </div>
                 </div>
                 
-                <!-- Image Container -->
-                <div class="flex-1 flex items-center justify-center min-h-0 w-full relative group">
-                  <Image 
-                    src={project.data.imageUrl} 
-                    alt={project.data.title} 
-                    width={1920}
-                    height={1080}
-                    format="webp"
-                    class="w-full h-full object-contain transition-all duration-700 opacity-90 hover:opacity-100"
-                  />
-                  <div class="absolute inset-0 border border-white/10 pointer-events-none"></div>
-                </div>
+                {project.id === 'stain-normalization' ? (
+                  <div class="flex-1 w-full">
+                    <StainComparison />
+                  </div>
+                ) : (
+                  <div class="flex-1 flex items-center justify-center min-h-0 w-full relative group">
+                    <Image 
+                      src={project.data.imageUrl} 
+                      alt={project.data.title} 
+                      width={1920}
+                      height={1080}
+                      format="webp"
+                      class="w-full h-full object-contain transition-all duration-700 opacity-90 hover:opacity-100"
+                    />
+                    <div class="absolute inset-0 border border-white/10 pointer-events-none"></div>
+                  </div>
+                )}
 
                 <!-- Action Bar -->
                 <div class="w-full flex justify-end pt-6 gap-4">

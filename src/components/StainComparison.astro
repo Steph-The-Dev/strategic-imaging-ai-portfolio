@@ -1,0 +1,405 @@
+---
+/**
+ * StainComparison.astro
+ * 
+ * Interactive stain normalization showcase with:
+ * 1. An img-comparison-slider for before/after single-patch comparison
+ * 2. A 3x2 CSS grid demonstrating domain adaptation across different labs
+ * 
+ * Uses the img-comparison-slider web component (v8) from CDN.
+ * Placeholder images in the grid can be swapped out for real GDC patches.
+ */
+---
+
+<!-- img-comparison-slider web component -->
+<script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js" is:inline></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+
+<section class="stain-comparison" id="stain-comparison">
+  
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION 1: Interactive Before / After Slider               -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="slider-section">
+    <div class="section-header">
+      <span class="header-badge">MICRO LEVEL: SINGLE PATCH INSPECTION</span>
+      <h3 class="header-title">Interactive Stain Comparison</h3>
+      <p class="header-subtitle">Drag the slider to compare raw scan vs. Reinhard LAB normalization output</p>
+    </div>
+
+    <div class="slider-container">
+      <img-comparison-slider>
+        <figure slot="first" class="slider-figure">
+          <img src="/images/stain_bad.jpg" width="100%" alt="Raw Scan — Domain Shift Artifact" />
+          <figcaption class="slider-label slider-label--left">
+            <span class="label-dot label-dot--red"></span>
+            RAW SCAN
+          </figcaption>
+        </figure>
+        <figure slot="second" class="slider-figure">
+          <img src="/images/stain_normalized.jpg" width="100%" alt="Normalized Output — Reinhard LAB" />
+          <figcaption class="slider-label slider-label--right">
+            <span class="label-dot label-dot--green"></span>
+            NORMALIZED
+          </figcaption>
+        </figure>
+      </img-comparison-slider>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SECTION 2: Domain Adaptation Grid (3 Labs)                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="grid-section">
+    <div class="section-header">
+      <span class="header-badge">MACRO LEVEL: DOMAIN ADAPTATION ACROSS DIFFERENT LABS</span>
+      <h3 class="header-title">Cross-Lab Normalization</h3>
+      <p class="header-subtitle">Three WSI patches from different scanners / staining protocols → unified color space</p>
+    </div>
+
+    <div class="normalization-grid">
+      <!-- Row labels -->
+      <div class="row-label row-label--top">
+        <span class="material-symbols-outlined row-label-icon">input</span>
+        INPUT
+      </div>
+      <div class="row-label row-label--bottom">
+        <span class="material-symbols-outlined row-label-icon">output</span>
+        OUTPUT
+      </div>
+
+      <!-- RAW Row -->
+      <div class="grid-cell" style="grid-area: r1;">
+        <span class="cell-badge cell-badge--raw">RAW: Lab A (Faded)</span>
+        <img src="/images/raw_1.jpg" alt="Raw Scan — Lab A, faded stain" loading="lazy" />
+      </div>
+      <div class="grid-cell" style="grid-area: r2;">
+        <span class="cell-badge cell-badge--raw">RAW: Lab B (Purple Shift)</span>
+        <img src="/images/raw_2.jpg" alt="Raw Scan — Lab B, hematoxylin excess" loading="lazy" />
+      </div>
+      <div class="grid-cell" style="grid-area: r3;">
+        <span class="cell-badge cell-badge--raw">RAW: Lab C (Low Contrast)</span>
+        <img src="/images/raw_3.jpg" alt="Raw Scan — Lab C, muddy green tint" loading="lazy" />
+      </div>
+
+      <!-- Divider -->
+      <div class="grid-divider" style="grid-area: div;">
+        <div class="divider-line"></div>
+        <span class="divider-label">REINHARD LAB TRANSFORM ↓</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <!-- NORMALIZED Row -->
+      <div class="grid-cell" style="grid-area: n1;">
+        <img src="/images/norm_1.jpg" alt="Normalized — Lab A output" loading="lazy" />
+        <span class="cell-badge cell-badge--norm">NORMALIZED (Reinhard)</span>
+      </div>
+      <div class="grid-cell" style="grid-area: n2;">
+        <img src="/images/norm_2.jpg" alt="Normalized — Lab B output" loading="lazy" />
+        <span class="cell-badge cell-badge--norm">NORMALIZED (Reinhard)</span>
+      </div>
+      <div class="grid-cell" style="grid-area: n3;">
+        <img src="/images/norm_3.jpg" alt="Normalized — Lab C output" loading="lazy" />
+        <span class="cell-badge cell-badge--norm">NORMALIZED (Reinhard)</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  /* ────────────────────────────────────────────────────────────
+     STAIN COMPARISON — Root Container
+     ──────────────────────────────────────────────────────────── */
+  .stain-comparison {
+    padding: 3rem 0 0;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+     SECTION HEADER (shared)
+     ──────────────────────────────────────────────────────────── */
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .header-badge {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--md-sys-color-primary-fixed, #a8c7fa);
+    background: rgba(var(--md-sys-color-primary-rgb, 0, 99, 153), 0.15);
+    border: 1px solid rgba(var(--md-sys-color-primary-rgb, 0, 99, 153), 0.3);
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+
+  .header-title {
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin: 10px 0 6px;
+  }
+
+  .header-subtitle {
+    font-family: monospace;
+    font-size: 12px;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+     SLIDER SECTION
+     ──────────────────────────────────────────────────────────── */
+  .slider-section {
+    margin-bottom: 3rem;
+  }
+
+  .slider-container {
+    max-width: 800px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .slider-figure {
+    margin: 0;
+    position: relative;
+  }
+
+  .slider-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .slider-label {
+    position: absolute;
+    bottom: 12px;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+  }
+
+  .slider-label--left {
+    left: 12px;
+  }
+
+  .slider-label--right {
+    right: 12px;
+  }
+
+  .label-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .label-dot--red {
+    background: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
+  }
+
+  .label-dot--green {
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+  }
+
+  /* Style the slider divider line */
+  img-comparison-slider {
+    --divider-width: 2px;
+    --divider-color: rgba(168, 199, 250, 0.6);
+    --default-handle-opacity: 0.9;
+    --default-handle-width: 40px;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+     GRID SECTION — Domain Adaptation
+     ──────────────────────────────────────────────────────────── */
+  .grid-section {
+    margin-top: 3rem;
+  }
+
+  .normalization-grid {
+    display: grid;
+    grid-template-areas:
+      "lbl-top r1  r2  r3"
+      ".       div div div"
+      "lbl-bot n1  n2  n3";
+    grid-template-columns: auto 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  /* Row labels */
+  .row-label {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 4px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .row-label--top {
+    grid-area: lbl-top;
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.08);
+    border-left: 2px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .row-label--bottom {
+    grid-area: lbl-bot;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.08);
+    border-left: 2px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .row-label-icon {
+    font-size: 14px;
+    transform: rotate(90deg);
+  }
+
+  /* Grid cells */
+  .grid-cell {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .grid-cell:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+    z-index: 10;
+  }
+
+  .grid-cell img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Cell badges */
+  .cell-badge {
+    position: absolute;
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    padding: 3px 8px;
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .cell-badge--raw {
+    top: 6px;
+    left: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+  }
+
+  .cell-badge--norm {
+    bottom: 6px;
+    right: 6px;
+    background: #e67e22;
+  }
+
+  /* Divider row */
+  .grid-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  }
+
+  .divider-label {
+    font-family: monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e67e22;
+    white-space: nowrap;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+     RESPONSIVE — Mobile stacks
+     ──────────────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .normalization-grid {
+      grid-template-areas:
+        "r1  r2  r3"
+        "div div div"
+        "n1  n2  n3";
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 4px;
+    }
+
+    .row-label {
+      display: none;
+    }
+
+    .cell-badge {
+      font-size: 8px;
+      padding: 2px 5px;
+    }
+
+    .header-title {
+      font-size: 1rem;
+    }
+
+    .slider-container {
+      border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .normalization-grid {
+      grid-template-areas:
+        "r1  r2"
+        "r3  r3"
+        "div div"
+        "n1  n2"
+        "n3  n3";
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+  }
+</style>
