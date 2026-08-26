@@ -50,6 +50,7 @@
   <!-- ═══════════════════════════════════════════════════════════ -->
   <!-- SECTION 2: Domain Adaptation Grid (3 Labs)                 -->
   <!-- ═══════════════════════════════════════════════════════════ -->
+  {/*
   <div class="grid-section">
     <div class="section-header">
       <span class="header-badge">MACRO LEVEL: DOMAIN ADAPTATION ACROSS DIFFERENT LABS</span>
@@ -104,6 +105,7 @@
       </div>
     </div>
   </div>
+  */}
 
 </section>
 
@@ -170,14 +172,21 @@
   }
 
   .slider-figure {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
     margin: 0;
     position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
   }
 
   .slider-figure img {
-    display: block;
-    width: 100%;
-    height: auto;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 
   .slider-label {
@@ -224,6 +233,9 @@
 
   /* Style the slider divider line */
   img-comparison-slider {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     --divider-width: 2px;
     --divider-color: rgba(168, 199, 250, 0.6);
     --default-handle-opacity: 0.9;
