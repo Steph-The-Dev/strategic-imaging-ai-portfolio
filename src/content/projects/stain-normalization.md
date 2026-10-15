@@ -1,14 +1,14 @@
 ---
 title: "Stain Normalization"
-description: "A specialized digital pathology tool for standardizing medical histology images. By applying advanced color normalization algorithms like Reinhard, it removes inconsistencies across lab environments, ensuring that AI diagnostic models maintain high accuracy and reliability in clinical settings."
+description: "A specialized digital pathology tool for standardizing medical histology images. By applying color normalization methods such as Reinhard, Macenko and CUT, it reduces color variation across labs and scanners, a key factor for the robustness of AI models in pathology."
 importance: 3
 tags: ["Reinhard", "OpenCV", "Digital_Pathology", "PyTest"]
 keywords: ["Digital Pathology", "Histology Image Standardization", "Medical AI", "Color Normalization", "Computer Vision Pathology"]
 metrics:
-  - label: "Latency"
-    value: "<10ms"
-  - label: "Test_Cov"
-    value: "100%"
+  - label: "Methods"
+    value: "3"
+  - label: "Eval"
+    value: "SSIM · PSNR · ΔLab"
 codeSnippet:
   filename: "reinhard.py"
   code: |

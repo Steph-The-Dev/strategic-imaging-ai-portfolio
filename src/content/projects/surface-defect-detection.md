@@ -1,12 +1,12 @@
 ---
 title: "Surface Defect Detection"
-description: "An automated quality control tool for industrial metal surfaces using advanced computer vision. The system employs adaptive thresholding and morphological filtering to detect surface flaws in real-time, optimized for complex reflections and difficult industrial lighting conditions."
+description: "An automated quality-control tool for industrial metal surfaces. It combines adaptive thresholding and morphological filtering in a modular, strategy-based design to detect surface flaws, with a focus on robustness under reflections and uneven lighting."
 importance: 1
 tags: ["Strategy_Pattern", "Morphology", "Adaptive_Thresh", "Mypy"]
-keywords: ["Industrial Quality Control", "Computer Vision Inspection", "Automated Defect Detection", "Surface Inspection AI", "Real-time Anomaly Detection"]
+keywords: ["Industrial Quality Control", "Computer Vision Inspection", "Automated Defect Detection", "Surface Inspection AI", "Anomaly Detection"]
 metrics:
-  - label: "Processing"
-    value: "Real-time"
+  - label: "Approach"
+    value: "Classical CV"
   - label: "Type_Safety"
     value: "Strict"
 codeSnippet:
