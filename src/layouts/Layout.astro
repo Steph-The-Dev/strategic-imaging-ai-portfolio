@@ -17,6 +17,8 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url} />
+    <meta name="theme-color" content="#00507d" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -32,6 +34,7 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL('/operator_profile.jpg', Astro.url)} />
 
+    {/* TODO(owner): Confirm JSON-LD fields (jobTitle, location) */}
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -113,6 +116,9 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
     </script>
   </head>
   <body class="bg-surface dark:bg-slate-950 text-on-surface dark:text-slate-100 font-sans antialiased selection:bg-primary selection:text-on-primary transition-colors duration-300">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2.5 focus:bg-primary focus:text-white focus:font-mono focus:text-xs focus:font-bold focus:shadow-xl focus:outline-none">
+      Skip to content
+    </a>
     <slot />
     <script is:inline>
       const themeToggleBtn = document.getElementById('theme-toggle');
