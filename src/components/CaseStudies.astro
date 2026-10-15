@@ -64,12 +64,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
                 </div>
 
                 <!-- Visual Probe Container -->
-                <div class="space-y-2">
-                  <div class="flex justify-between items-center">
-                    <div class="font-mono text-[10px] text-primary-fixed bg-primary/20 px-2.5 py-1 uppercase tracking-wider border border-primary/30">
-                      Visual Preview <span class="opacity-60" aria-hidden="true">[LIVE_PROBE]</span>
-                    </div>
-                  </div>
+                <div>
                   {project.id === 'stain-normalization' ? (
                     <div class="bg-black/20 p-4 transition-colors relative overflow-hidden border border-white/10">
                       <StainComparison />
@@ -270,13 +265,6 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
               <div class="flex-none flex flex-col bg-on-background dark:bg-slate-950">
                 <!-- Visual Probe -->
                 <div class="relative bg-black/20 flex flex-col p-8 xl:p-10 border-b border-white/5 min-h-[460px] overflow-hidden">
-                  <!-- Internal Header -->
-                  <div class="flex justify-between items-center mb-6">
-                    <div class="font-mono text-[10px] text-primary-fixed bg-primary/20 px-3 py-1 uppercase tracking-wider border border-primary/30 font-bold">
-                      Visual Preview <span class="opacity-60" aria-hidden="true">[LIVE_PROBE]</span>
-                    </div>
-                  </div>
-                  
                   {project.id === 'stain-normalization' ? (
                     <div class="flex-1 w-full">
                       <StainComparison />
