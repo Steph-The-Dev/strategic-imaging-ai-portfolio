@@ -11,24 +11,32 @@
         <h2 class="font-mono font-extrabold text-2xl sm:text-4xl md:text-5xl text-on-background dark:text-slate-100 uppercase tracking-tighter leading-tight transition-colors break-words">
           Visual INTUITION.<br/>Scalable PRECISION.
         </h2>
+        {/* TODO(owner): Confirm exact engagement types (projects, working-student role, collaboration, thesis) */}
         <div class="bg-surface-container dark:bg-slate-800 border border-outline-variant dark:border-slate-700 p-4 sm:p-6 max-w-xl mx-auto transition-colors w-full">
           <p class="font-mono text-xs sm:text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed transition-colors break-words">
-            <span class="block mb-1">Open for Data Science Opportunities | Basel / Remote</span>
-            <span class="block mb-1">Specializing in Computer Vision & ML Engineering</span>
-            <span class="block">Deep Visual Domain Knowledge + AI Scalability</span>
+            <span class="block mb-1 font-bold text-on-surface dark:text-slate-100">Open for Computer Vision & ML Engineering Projects | Basel / Remote</span>
+            <span class="block mb-1">Collaboration, Applied Research & Industry Engagements</span>
+            <span class="block text-slate-500 dark:text-slate-400">Deep Visual Domain Knowledge + AI Scalability</span>
           </p>
         </div>
         <div>
           <a 
             id="contact-trigger"
+            href="mailto:mail@stephthedev.de"
+            aria-label="Send an email to Stephan Pfeiffer"
             class="inline-flex justify-center items-center px-6 sm:px-12 py-4 sm:py-5 bg-on-background dark:bg-slate-100 text-white dark:text-slate-900 font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] hover:bg-primary dark:hover:bg-primary-fixed focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 transition-all group w-full sm:w-auto cursor-pointer"
           >
             LET'S CONNECT
-            <span class="material-symbols-outlined ml-2 sm:ml-3 transition-transform group-hover:translate-x-1">arrow_forward_ios</span>
+            <span class="material-symbols-outlined ml-2 sm:ml-3 transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward_ios</span>
           </a>
+          <noscript>
+            <p class="font-mono text-xs text-slate-500 mt-2">
+              Email: mail [at] stephthedev.de
+            </p>
+          </noscript>
         </div>
       </div>
-      <div class="absolute bottom-4 right-4 font-mono text-[9px] text-outline dark:text-slate-500 font-bold uppercase">
+      <div class="absolute bottom-4 right-4 font-mono text-[9px] text-outline dark:text-slate-500 font-bold uppercase" aria-hidden="true">
         EOF_TRANSMISSION
       </div>
     </div>
@@ -38,7 +46,8 @@
 <script>
   function initContact() {
     const trigger = document.getElementById('contact-trigger');
-    if (trigger) {
+    if (trigger && !trigger.hasAttribute('data-initialized')) {
+      trigger.setAttribute('data-initialized', 'true');
       // Base64 for mail@stephthedev.de
       const encoded = "bWFpbEBzdGVwaHRoZWRldi5kZQ==";
       trigger.setAttribute('href', "mailto:" + atob(encoded));
