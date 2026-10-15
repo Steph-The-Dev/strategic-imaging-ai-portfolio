@@ -26,21 +26,21 @@ const colorClasses = {
   <!-- Row 1: ID and Status -->
   <div class="flex justify-between items-start self-start">
     <span class="font-mono text-xs md:text-sm font-bold text-primary dark:text-primary-fixed">{id}</span>
-    <span class={`font-mono text-[10px] md:text-xs px-2 py-1 border ${colorClasses[statusColor]}`}>{status}</span>
+    <span class={`font-mono text-xs px-2 py-1 border font-bold uppercase ${colorClasses[statusColor]}`}>{status}</span>
   </div>
 
   <!-- Row 2: Title (Top Aligned) -->
-  <h3 class="font-mono font-bold text-sm leading-tight text-on-background dark:text-slate-100 uppercase transition-colors self-start py-4">{title}</h3>
+  <h3 class="font-mono font-bold text-sm md:text-base leading-tight text-on-background dark:text-slate-100 uppercase transition-colors self-start py-4">{title}</h3>
 
   <!-- Row 3: Description (Mono + Padding) -->
-  <p class="font-mono text-[13px] text-on-surface-variant dark:text-slate-400 leading-snug transition-colors self-start pb-6">{description}</p>
+  <p class="font-mono text-xs md:text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed transition-colors self-start pb-6">{description}</p>
 
   <!-- Row 4: Metadata (Bottom Aligned) -->
   <div class="mt-auto pt-4 border-t border-dashed border-outline-variant dark:border-slate-700 transition-colors self-end">
-    <span class="font-mono text-[10px] md:text-xs text-outline dark:text-slate-300 font-bold uppercase mb-2 block">Technical_Metadata:</span>
+    <span class="font-mono text-xs text-slate-600 dark:text-slate-400 font-bold uppercase mb-2 block">Technical Metadata:</span>
     <div class="flex flex-wrap gap-2">
       {metadata.map(tag => (
-        <span class="font-mono text-[11px] md:text-xs text-on-surface dark:text-slate-200 bg-surface-container dark:bg-slate-800/80 px-2 py-1 border border-outline-variant/30 dark:border-slate-700/50">
+        <span class="font-mono text-xs text-on-surface dark:text-slate-200 bg-surface-container dark:bg-slate-800/80 px-2 py-1 border border-outline-variant/30 dark:border-slate-700/50">
           {tag}
         </span>
       ))}
