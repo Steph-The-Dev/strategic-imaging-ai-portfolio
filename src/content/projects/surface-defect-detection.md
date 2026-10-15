@@ -1,6 +1,8 @@
 ---
 title: "Surface Defect Detection"
 description: "An automated quality-control tool for industrial metal surfaces. Employs classical computer vision (adaptive thresholding and morphological filtering) in a modular strategy pattern—a deliberate, explainable, and low-latency architecture designed for robust inspection under non-uniform illumination."
+limitations: "Classical morphological approach sensitive to extreme illumination shifts and surface texture variations beyond calibrated threshold bounds; no deep learning anomaly detection integrated."
+imageAlt: "Industrial metal surface defect detection and contour analysis interface"
 importance: 1
 tags: ["Strategy_Pattern", "Morphology", "Adaptive_Thresh", "Mypy"]
 keywords: ["Industrial Quality Control", "Computer Vision Inspection", "Automated Defect Detection", "Surface Inspection AI", "Anomaly Detection"]

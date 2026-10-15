@@ -1,6 +1,8 @@
 ---
 title: "Solar ESG Pipeline"
 description: "A cloud-based machine learning pipeline for built-up area and roof footprint segmentation from multi-spectral Sentinel-2 imagery (10 m resolution) using a U-Net architecture. Developed as a proof of concept for the Basel urban area to explore automated ESG and solar-potential reporting."
+limitations: "Constrained by Sentinel-2 10 m spatial resolution; building footprint boundaries are coarse approximations and proof-of-concept only, requiring sub-meter aerial imagery for cadastral-grade rooftop verification."
+imageAlt: "Sentinel-2 satellite imagery segmentation and ESG analysis dashboard"
 importance: 2
 tags: ["Sentinel-2", "PyTorch", "Geospatial", "Pydantic_V2"]
 keywords: ["Satellite Imagery", "Remote Sensing", "Sustainability Monitoring", "Machine Learning Pipelines", "Sentinel-2", "Building Footprint Identification", "ESG Data Science"]

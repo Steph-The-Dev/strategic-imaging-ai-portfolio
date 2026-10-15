@@ -1,6 +1,8 @@
 ---
 title: "Stain Normalization"
 description: "A specialized digital pathology tool for standardizing medical histology images. By applying color normalization methods such as Reinhard, Macenko and CUT, it reduces color variation across labs and scanners, a key factor for the robustness of AI models in pathology."
+limitations: "Research and demonstration tool; not clinically validated for diagnostic workflows. Cross-domain evaluation across diverse scanner profiles is currently ongoing."
+imageAlt: "Digital pathology stain normalization comparison showing raw histology vs normalized tissue patch"
 importance: 3
 tags: ["Reinhard", "Macenko", "CUT", "Digital_Pathology", "PyTest"]
 keywords: ["Digital Pathology", "Histology Image Standardization", "Medical AI", "Color Normalization", "Computer Vision Pathology"]
