@@ -23,7 +23,6 @@
   <div class="slider-section">
     {/* TODO(owner): Confirm which reference image was used for slider comparison and verify exact FOV matching */}
     <div class="section-header">
-      <span class="header-badge">MICRO LEVEL: SINGLE PATCH INSPECTION</span>
       <h3 class="header-title">Interactive Stain Comparison</h3>
       <p class="header-subtitle">Drag the slider to compare raw scan vs. Reinhard LAB normalization output</p>
     </div>
@@ -115,7 +114,7 @@
      STAIN COMPARISON — Root Container
      ──────────────────────────────────────────────────────────── */
   .stain-comparison {
-    padding: 3rem 0 0;
+    padding: 0;
   }
 
   /* ────────────────────────────────────────────────────────────
@@ -125,20 +124,6 @@
     margin-bottom: 1.5rem;
   }
 
-  .header-badge {
-    display: inline-block;
-    font-family: monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--md-sys-color-primary-fixed, #a8c7fa);
-    background: rgba(var(--md-sys-color-primary-rgb, 0, 99, 153), 0.15);
-    border: 1px solid rgba(var(--md-sys-color-primary-rgb, 0, 99, 153), 0.3);
-    padding: 4px 10px;
-    margin-bottom: 12px;
-  }
-
   .header-title {
     font-family: monospace;
     font-weight: 800;
@@ -146,7 +131,7 @@
     color: #e2e8f0;
     text-transform: uppercase;
     letter-spacing: -0.02em;
-    margin: 10px 0 6px;
+    margin: 0 0 6px;
   }
 
   .header-subtitle {
