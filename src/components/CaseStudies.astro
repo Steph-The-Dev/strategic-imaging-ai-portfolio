@@ -21,7 +21,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
         const triggerId = `accordion-trigger-${project.id}`;
         const contentId = `accordion-content-${project.id}`;
         return (
-          <div class={`project-accordion-item border border-outline-variant dark:border-slate-800 bg-on-background dark:bg-slate-950 transition-all duration-300 overflow-hidden ${isOpen ? 'is-open' : ''}`}>
+          <div class={`project-accordion-item relative border border-outline-variant dark:border-slate-800 bg-on-background dark:bg-slate-950 transition-all duration-300 overflow-hidden ${isOpen ? 'is-open' : ''}`}>
             <button 
               id={triggerId}
               class={`accordion-trigger w-full text-left p-6 flex flex-col items-start gap-2 relative group bg-on-background dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary ${isOpen ? 'is-open' : ''}`}
@@ -41,7 +41,7 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
             <div 
               id={contentId}
               aria-labelledby={triggerId}
-              class="accordion-content overflow-hidden transition-all duration-500 ease-in-out bg-on-background dark:bg-slate-950" 
+              class={`accordion-content relative overflow-hidden transition-all duration-500 ease-in-out bg-on-background dark:bg-slate-950 ${isOpen ? '' : 'invisible'}`} 
               style={isOpen ? "max-height: none;" : "max-height: 0px;"}
             >
               <div class="p-6 pt-0 space-y-8 border-t border-white/10">
@@ -380,30 +380,57 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
     // Mobile Accordion Logic
     const accordionTriggers = root.querySelectorAll<HTMLButtonElement>('.accordion-trigger');
     accordionTriggers.forEach(trigger => {
+      const item = trigger.closest('.project-accordion-item');
+      const content = item?.querySelector('.accordion-content') as HTMLElement;
+      if (!content) return;
+
+      content.addEventListener('transitionend', (e) => {
+        if (e.propertyName === 'max-height') {
+          if (trigger.classList.contains('is-open')) {
+            content.style.maxHeight = 'none';
+          } else {
+            content.classList.add('invisible');
+          }
+        }
+      });
+
       trigger.addEventListener('click', () => {
-        const item = trigger.closest('.project-accordion-item');
-        const content = item?.querySelector('.accordion-content') as HTMLElement;
         const isOpen = trigger.classList.contains('is-open');
 
         root.querySelectorAll('.project-accordion-item').forEach(otherItem => {
           if (otherItem !== item) {
-            const otherTrigger = otherItem.querySelector('.accordion-trigger');
-            const otherContent = otherItem.querySelector('.accordion-content') as HTMLElement;
-            if (otherTrigger) {
+            const otherTrigger = otherItem.querySelector<HTMLButtonElement>('.accordion-trigger');
+            const otherContent = otherItem.querySelector<HTMLElement>('.accordion-content');
+            if (otherTrigger && otherTrigger.classList.contains('is-open')) {
               otherTrigger.classList.remove('is-open');
               otherTrigger.setAttribute('aria-expanded', 'false');
+              if (otherContent) {
+                if (otherContent.style.maxHeight === 'none' || !otherContent.style.maxHeight) {
+                  otherContent.style.maxHeight = otherContent.scrollHeight + 'px';
+                  otherContent.offsetHeight;
+                }
+                requestAnimationFrame(() => {
+                  otherContent.style.maxHeight = '0px';
+                });
+              }
             }
-            if (otherContent) otherContent.style.maxHeight = '0px';
           }
         });
 
         if (isOpen) {
           trigger.classList.remove('is-open');
           trigger.setAttribute('aria-expanded', 'false');
-          content.style.maxHeight = '0px';
+          if (content.style.maxHeight === 'none' || !content.style.maxHeight) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            content.offsetHeight;
+          }
+          requestAnimationFrame(() => {
+            content.style.maxHeight = '0px';
+          });
         } else {
           trigger.classList.add('is-open');
           trigger.setAttribute('aria-expanded', 'true');
+          content.classList.remove('invisible');
           content.style.maxHeight = content.scrollHeight + 'px';
         }
       });
@@ -419,6 +446,10 @@ const sortedProjects = projects.sort((a, b) => b.data.importance - a.data.import
 </script>
 
 <style>
+  .accordion-content {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .technical-grid {
     background-image: 
       linear-gradient(to right, rgba(0, 99, 153, 0.05) 1px, transparent 1px),
