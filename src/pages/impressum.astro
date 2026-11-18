@@ -2,26 +2,38 @@
 import LegalPage from '../components/LegalPage.astro';
 ---
 
-{/*
-  TODO(Stephan): Rechtstexte prüfen/ergänzen.
-  Nur Platzhalter-Struktur, KEINE Rechtstexte. Inhalt mit einem Generator
-  oder einer Fachperson klären (u. a.: gilt § 5 DDG für eine .de-Domain mit
-  Wohnsitz in der Schweiz? Welche Angaben sind nötig?).
-  Seite ist bis dahin auf noindex gesetzt.
-*/}
 <LegalPage title="Impressum">
   <section>
-    <h2>Angaben zum Anbieter</h2>
-    <p class="placeholder">[Platzhalter: Name, Anschrift]</p>
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>
+      Stephan Pfeiffer<br />
+      Rigistr. 29<br />
+      4054 Basel<br />
+      Schweiz
+    </p>
   </section>
 
   <section>
     <h2>Kontakt</h2>
-    <p class="placeholder">[Platzhalter: Kontaktangaben]</p>
+    <p>
+      E-Mail: <a id="legal-mail" class="underline decoration-2 underline-offset-4 hover:text-primary" href="#">mail [at] stephthedev.de</a>
+    </p>
   </section>
 
   <section>
-    <h2>Verantwortlich für den Inhalt</h2>
-    <p class="placeholder">[Platzhalter]</p>
+    <h2>Haftung für Links</h2>
+    <p>Für die Inhalte verlinkter externer Seiten sind ausschliesslich deren Betreiber verantwortlich.</p>
   </section>
+
+  {/* TODO(Stephan): Abschnitt "Urheberrecht" ergänzen? Der Text von schneidenundfaerben.de (Standbilder aus Produktionen) passt hier nicht; ggf. Herkunft/Lizenz der Histologie- und Satellitenbilder nennen. */}
 </LegalPage>
+
+<script>
+  const link = document.getElementById('legal-mail');
+  if (link) {
+    // Base64 for mail@stephthedev.de (same obfuscation as the contact section)
+    const address = atob('bWFpbEBzdGVwaHRoZWRldi5kZQ==');
+    link.setAttribute('href', 'mailto:' + address);
+    link.textContent = address;
+  }
+</script>

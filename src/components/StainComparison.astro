@@ -6,14 +6,16 @@
  * 1. An img-comparison-slider for before/after single-patch comparison
  * 2. A 3x2 CSS grid demonstrating domain adaptation across different labs
  * 
- * Uses the img-comparison-slider web component (v8) from CDN.
+ * Uses the img-comparison-slider web component (v8), bundled from npm (no CDN).
  * Placeholder images in the grid can be swapped out for real GDC patches.
  */
+import 'img-comparison-slider/dist/styles.css';
 ---
 
-<!-- img-comparison-slider web component -->
-<script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js" is:inline></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+<!-- img-comparison-slider web component (bundled, self-hosted) -->
+<script>
+  import 'img-comparison-slider';
+</script>
 
 <section class="stain-comparison" id="stain-comparison">
   

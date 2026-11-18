@@ -1,50 +1,49 @@
 # Legal notes: what the site loads and stores
 
-Technical facts for writing the Impressum / Datenschutz texts.
-This is **not** legal advice. `TODO(Stephan): Rechtstexte prüfen/ergänzen`.
+These are the technical facts behind the texts on `/impressum` and `/datenschutz`.
+The texts follow the setup of schneidenundfaerben.de. Both domains are served from
+the same netcup server (identical A/AAAA records). This is **not** legal advice.
+
+If anything below changes, update `src/pages/datenschutz.astro` as well.
 
 ## Matomo (web analytics)
 
-**Where:** `src/layouts/Layout.astro`, i.e. on every page.
+**Where:** `src/layouts/Layout.astro`, on every page.
 
-- JS tracker in `<head>` (`<!-- Matomo -->` block): loads
-  `//schneidenundfaerben.de/matomo/matomo.js` and sends hits to
-  `//schneidenundfaerben.de/matomo/matomo.php`, site ID `1`.
-  The data goes to a Matomo instance on the domain schneidenundfaerben.de,
-  not on stephthedev.de.
-- `<noscript>` pixel at the end of `<body>`:
-  `//schneidenundfaerben.de/matomo/matomo.php?idsite=1&rec=1` (only when
-  JavaScript is off).
+- Tracker: `//schneidenundfaerben.de/matomo/` (self-hosted on the same netcup
+  server), site ID `1`.
+- **No cookies:** `disableCookies` is called before `trackPageView`.
+- **Objection is respected:** the tracker does not load when
+  `localStorage["matomo-optout"] === "1"`, when Do Not Track is on, or when
+  Global Privacy Control is on.
+- It loads only after `load`, via `requestIdleCallback`, with a 2 s fallback.
+- There is no `<noscript>` pixel, so nothing is measured without JavaScript.
+- Calls: `disableCookies`, `trackPageView`, `enableLinkTracking`. There is no
+  heartbeat timer.
+- Opt-out UI: `src/components/MatomoOptOut.astro`, shown on `/datenschutz`.
+- Whether IPs are shortened depends on the Matomo server settings
+  (Administration → Privacy → Anonymize data). The Datenschutz text says
+  "gekürzte IP-Adresse". Keep that setting on.
 
-**Configured calls:** `setDocumentTitle`, `setCookieDomain(".stephthedev.de")`,
-`setDomains`, `trackPageView`, `enableLinkTracking`, `enableHeartBeatTimer`,
-plus another `trackPageView` after Astro view-transition swaps.
+## Fonts
 
-**Cookies: yes, by default.** Nothing calls `disableCookies` or
-`requireConsent`/`requireCookieConsent`, and `setCookieDomain` is set
-explicitly. So the JS tracker sets Matomo's standard first-party cookies on
-`.stephthedev.de` (typically `_pk_id.*` for about 13 months and `_pk_ses.*`
-for 30 minutes, plus `_pk_ref.*` when a visitor arrives from a referrer).
-There is **no consent banner**.
+All fonts are self-hosted, and nothing is loaded from Google at runtime.
 
-- `enableHeartBeatTimer` sends extra requests while the tab is in focus, to
-  measure time on page.
-- `enableLinkTracking` records outbound link clicks and downloads.
-- The noscript pixel does not set first-party cookies. Whether the Matomo
-  server sets any cookies of its own (and whether it anonymizes IPs) depends
-  on that instance's server settings, which this repo cannot show. Check that
-  in the Matomo admin (Privacy → Anonymize data).
+- Inter and JetBrains Mono come from `@fontsource-variable/*` (npm) and are
+  bundled by Astro.
+- Material Symbols uses `public/fonts/material-symbols-outlined-subset.woff2`,
+  a subset that contains only the icons in use. To add an icon, download the
+  subset again from `fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=...`
+  with the full list of icon names and replace the file.
 
-Options for later, not done here: `_paq.push(['disableCookies'])` for
-cookie-less tracking, or a consent mechanism.
+## Browser storage
 
-## Other third parties and storage
+- `localStorage["theme"]` stores the light/dark choice.
+- `localStorage["matomo-optout"]` stores the opt-out choice.
 
-- **Google Fonts:** `fonts.googleapis.com` / `fonts.gstatic.com` (Inter,
-  JetBrains Mono, Material Symbols) are loaded from Google on every page, so
-  the visitor's IP address reaches Google. Self-hosting the fonts would avoid
-  that.
-- **localStorage:** key `theme` (`light` / `dark`) stores the dark-mode choice.
-  It never leaves the browser.
-- **Outbound links:** LinkedIn, GitHub and Streamlit apps are only plain
-  links. Nothing from them is embedded.
+Neither value is sent anywhere.
+
+## Outbound links
+
+LinkedIn, GitHub and the Streamlit apps are only plain links. Nothing from
+them is embedded.

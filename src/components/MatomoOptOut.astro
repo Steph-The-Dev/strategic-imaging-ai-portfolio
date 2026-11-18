@@ -1,0 +1,53 @@
+---
+// Opt-out for the cookieless Matomo tracking in Layout.astro.
+// Stores the choice in localStorage ("matomo-optout"); the tracker reads it before loading.
+---
+
+<div
+  class="optout border border-outline-variant dark:border-slate-700 bg-surface-container dark:bg-slate-800 p-4 space-y-2"
+  data-optout
+  hidden
+  data-t-signal="Ihr Browser sendet ein Signal gegen Tracking. Ihr Besuch wird nicht erfasst."
+  data-t-out="Ihr Besuch wird nicht erfasst. Die Einstellung gilt für diesen Browser."
+  data-t-in="Ihr Besuch wird anonym erfasst. Häkchen entfernen, um zu widersprechen."
+>
+  <label class="flex items-center gap-3 font-bold text-on-surface dark:text-slate-100 cursor-pointer">
+    <input type="checkbox" class="w-4 h-4 accent-primary" data-optout-box />
+    <span>Meinen Besuch für die Statistik erfassen</span>
+  </label>
+  <p class="text-xs" data-optout-status role="status" aria-live="polite"></p>
+</div>
+<noscript>
+  <p>Ohne JavaScript findet keine Messung statt.</p>
+</noscript>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-optout]');
+  if (root) {
+    const box = root.querySelector<HTMLInputElement>('[data-optout-box]')!;
+    const status = root.querySelector<HTMLElement>('[data-optout-status]')!;
+    const nav = navigator as Navigator & { globalPrivacyControl?: boolean };
+    const signal = navigator.doNotTrack === '1' || Boolean(nav.globalPrivacyControl);
+    let optedOut = false;
+    try {
+      optedOut = localStorage.getItem('matomo-optout') === '1';
+    } catch {}
+
+    const render = () => {
+      box.checked = !optedOut && !signal;
+      status.textContent =
+        (signal ? root.dataset.tSignal : optedOut ? root.dataset.tOut : root.dataset.tIn) ?? '';
+    };
+
+    if (signal) box.disabled = true;
+    box.addEventListener('change', () => {
+      optedOut = !box.checked;
+      try {
+        localStorage.setItem('matomo-optout', optedOut ? '1' : '0');
+      } catch {}
+      render();
+    });
+    render();
+    root.hidden = false;
+  }
+</script>

@@ -35,10 +35,10 @@ const { title } = Astro.props;
     letter-spacing: 0.05em;
     padding-top: 1rem;
   }
-  .legal :global(.placeholder) {
-    border-left: 4px solid currentColor;
-    padding-left: 1rem;
-    opacity: 0.7;
-    font-style: italic;
+  .legal :global(section > * + *) {
+    margin-top: 0.75rem;
+  }
+  .legal :global(p) {
+    max-width: 72ch;
   }
 </style>
