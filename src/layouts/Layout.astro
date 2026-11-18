@@ -4,19 +4,22 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "20 years of broadcast color grading and image pipelines, now applied to computer vision. MSc candidate in Applied Data Science & AI at HSLU, Basel." } = Astro.props;
+const { title, description = "20 years of broadcast color grading and image pipelines, now applied to computer vision. MSc candidate in Applied Data Science & AI at HSLU, Basel.", lang = "en", noindex = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="light">
+<html lang={lang} class="light">
   <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#00507d" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
 
