@@ -21,7 +21,7 @@ const projects = defineCollection({
     githubUrl: z.string().url(),
     liveUrl: z.string().url().optional(),
     imageUrl: image(),
-    reportId: z.string(), // e.g. "TEST_REPORT_084"
+    reportId: z.string(), // e.g. "SPEC_LAB_NORM_01"
     keywords: z.array(z.string()).optional(),
     techStack: z.object({
       engine: z.array(z.string()),
