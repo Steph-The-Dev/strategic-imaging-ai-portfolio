@@ -6,6 +6,47 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Material Symbols, self-hosted subset with only the icons in use.
+   Adding an icon: re-download the subset from fonts.googleapis.com/css2 with
+   the full &icon_names= list and replace the file in public/fonts/. */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-symbols-outlined-subset.woff2') format('woff2');
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Typographic line breaks: even line lengths for headings and short
+   labels, no orphans in running text. */
+@layer base {
+  h1, h2, h3, h4, h5, h6, li, figcaption, blockquote {
+    text-wrap: balance;
+  }
+  p, dd {
+    text-wrap: pretty;
+  }
+}
+
 @theme {
   --color-on-background: #0b1c30;
   --color-error-container: #ffdad6;
@@ -55,8 +96,8 @@ html {
   --color-on-secondary-fixed-variant: #783200;
   --color-outline: #707881;
 
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter Variable", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
   
   --radius-DEFAULT: 0px;
   --radius-lg: 0px;
@@ -74,7 +115,7 @@ html {
     border: 1px solid rgba(112, 120, 129, 0.2);
   }
   .clinical-header {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     letter-spacing: -0.02em;
     text-transform: uppercase;
   }

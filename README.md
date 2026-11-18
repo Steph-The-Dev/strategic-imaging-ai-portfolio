@@ -1,9 +1,8 @@
 # Strategic Imaging AI Portfolio
 
-**REF.ID: SP-DS-2026**  
 Live Deployment: [https://www.stephthedev.de](https://www.stephthedev.de)
 
-Professional portfolio of **Stephan Pfeiffer**, bridging 20 years of digital imaging and signal processing (TV Editor & Colorist) with applied data science and computer vision architectures (MSc student at HSLU).
+Professional portfolio of **Stephan Pfeiffer**, combining 20 years of broadcast color grading and image pipelines (freelance editor & colorist) with computer vision (MSc candidate, Applied Data Science & AI, HSLU).
 
 ![Stain Normalization Showcase](public/stain_visualization.png)
 

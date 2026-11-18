@@ -1,22 +1,27 @@
 ---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = Astro.props;
+const { title, description = "20 years of broadcast color grading and image pipelines, now applied to computer vision. MSc candidate in Applied Data Science & AI at HSLU, Basel.", lang = "en", noindex = false } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="light">
+<html lang={lang} class="light">
   <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#00507d" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)" />
 
@@ -40,7 +45,7 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Stephan Pfeiffer",
-      "jobTitle": "Visual Systems Architect & Data Scientist",
+      "jobTitle": "MSc Candidate, Applied Data Science & AI (HSLU)",
       "url": "https://stephthedev.de",
       "sameAs": [
         "https://www.linkedin.com/in/stephanpfeiffer/",
@@ -57,7 +62,7 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
         "Imaging Physics",
         "Color Science"
       ],
-      "description": "Visual Systems Architect specializing in bridging 20 years of visual domain expertise with modern AI architectures.",
+      "description": "20 years of broadcast color grading and image pipelines, now applied to computer vision. MSc candidate in Applied Data Science & AI at HSLU, Basel.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Basel",
@@ -72,34 +77,36 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="preload" href="/fonts/material-symbols-outlined-subset.woff2" as="font" type="font/woff2" crossorigin />
     
-    <!-- Matomo -->
+    <!-- Matomo (self-hosted on the same netcup server, no cookies; see docs/LEGAL_NOTES.md) -->
     <script is:inline>
-      var _paq = window._paq = window._paq || [];
-      _paq.push(["setDocumentTitle", location.hostname + "/" + document.title]);
-      _paq.push(["setCookieDomain", ".stephthedev.de"]);
-      _paq.push(["setDomains", ["*.stephthedev.de", "stephthedev.de"]]);
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      _paq.push(['enableHeartBeatTimer']);
-      (function() {
-        var u="//schneidenundfaerben.de/matomo/";
-        _paq.push(['setTrackerUrl', u+'matomo.php']);
-        _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-      })();
-
-      // Support for Astro View Transitions
-      document.addEventListener('astro:after-swap', () => {
-        _paq.push(['setCustomUrl', window.location.href]);
-        _paq.push(['setDocumentTitle', location.hostname + "/" + document.title]);
-        _paq.push(['trackPageView']);
+      window.addEventListener('load', function () {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(initMatomo, { timeout: 2000 });
+        } else {
+          setTimeout(initMatomo, 2000);
+        }
       });
+
+      function initMatomo() {
+        // Only measure the live site, not localhost / previews
+        if (!/(^|\.)stephthedev\.de$/.test(location.hostname)) return;
+        // Respect objection: own opt-out (Datenschutz page), Do Not Track, Global Privacy Control
+        try { if (localStorage.getItem('matomo-optout') === '1') return; } catch (e) {}
+        if (navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.globalPrivacyControl) return;
+        var _paq = (window._paq = window._paq || []);
+        _paq.push(['disableCookies']);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        var u = '//schneidenundfaerben.de/matomo/';
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.async = true;
+        g.src = u + 'matomo.js';
+        if (s && s.parentNode) { s.parentNode.insertBefore(g, s); } else { d.head.appendChild(g); }
+      }
     </script>
     <!-- End Matomo Code -->
 
@@ -143,6 +150,5 @@ const { title, description = "Stephan Pfeiffer - Visual Systems Architect" } = A
         });
       }
     </script>
-    <noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//schneidenundfaerben.de/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
   </body>
 </html>

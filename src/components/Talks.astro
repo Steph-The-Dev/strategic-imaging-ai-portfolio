@@ -1,0 +1,58 @@
+---
+import { talks } from "../data/talks";
+---
+
+<section
+  class="py-12 md:py-24 bg-white dark:bg-slate-900 border-b border-outline-variant dark:border-slate-700 transition-colors duration-300"
+  id="talks"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div
+      class="mb-12 border-l-8 border-primary dark:border-primary-fixed pl-8 transition-colors"
+    >
+      <span
+        class="font-mono text-xs md:text-sm text-primary dark:text-primary-fixed font-bold uppercase tracking-[0.3em] mb-2 block"
+        aria-hidden="true">SPEAKING</span
+      >
+      <h2
+        class="font-mono font-extrabold text-3xl md:text-5xl text-on-background dark:text-slate-100 uppercase tracking-tighter"
+      >
+        Talks
+      </h2>
+    </div>
+
+    <ul class="space-y-px bg-outline-variant dark:bg-slate-700 border border-outline-variant dark:border-slate-700 transition-colors">
+      {talks.map((talk) => (
+        <li class="bg-white dark:bg-slate-900 p-6 md:p-8 space-y-4 transition-colors">
+          <div class="font-mono text-xs font-bold text-primary dark:text-primary-fixed uppercase tracking-wider leading-relaxed">
+            <time datetime={talk.isoDate}>{talk.date}</time> · {talk.format} · {talk.event}
+          </div>
+          <div class="space-y-1">
+            <h3 lang="de" class="font-mono font-bold text-base md:text-lg leading-snug text-on-background dark:text-slate-100 transition-colors">
+              {talk.title}
+            </h3>
+            {talk.subtitle && (
+              <p class="font-mono text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                {talk.subtitle}
+              </p>
+            )}
+          </div>
+          <p class="font-mono text-sm text-on-surface-variant dark:text-slate-300 leading-relaxed border-l-4 border-primary pl-6 max-w-3xl transition-colors">
+            {talk.abstract}
+          </p>
+          {talk.slidesUrl && (
+            <a
+              href={talk.slidesUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1 font-mono text-xs font-bold text-primary dark:text-primary-fixed hover:underline"
+            >
+              Slides <span class="material-symbols-outlined text-[14px]" aria-hidden="true">arrow_forward</span>
+              <span class="sr-only"> (opens in new tab)</span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

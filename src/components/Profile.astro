@@ -8,12 +8,6 @@ import operatorProfile from '../assets/operator_profile.jpg';
     
     <!-- Title Column -->
     <div class="lg:col-span-4 relative pt-12 lg:pt-16">
-      <!-- Absolute-positioned label sits above the grid alignment point -->
-      <div class="absolute top-0 left-0 inline-flex items-center space-x-2 bg-primary/10 px-3 py-1 border border-primary/20">
-        <span class="w-2 h-2 bg-primary rounded-full animate-pulse" aria-hidden="true"></span>
-        <span class="font-mono text-xs font-bold text-primary dark:text-primary-fixed uppercase tracking-wider">Operator_Profile</span>
-      </div>
-
       <!-- Profile Image Module -->
       <div 
         class="profile-module relative group max-w-[280px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-950"
@@ -34,9 +28,6 @@ import operatorProfile from '../assets/operator_profile.jpg';
           <!-- Scanline Overlay Effect - Now Fades Out on Hover -->
           <div class="scanline-overlay absolute inset-0 pointer-events-none opacity-40 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_3px,4px_100%] group-hover:opacity-0 transition-opacity duration-500"></div>
         </div>
-        <div class="absolute bottom-2 right-2 bg-primary text-white font-mono text-xs px-2.5 py-1 uppercase tracking-wider font-bold">
-          ID_CONFIRMED
-        </div>
       </div>
 
       <div class="space-y-6 pt-10">
@@ -52,12 +43,12 @@ import operatorProfile from '../assets/operator_profile.jpg';
     <!-- Content Column -->
     <div class="lg:col-span-8 space-y-12 pt-12 lg:pt-16">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Strategic Interface -->
+        <!-- Color Science to ML -->
         <div class="space-y-4">
-          <h3 class="font-mono font-bold text-sm text-primary dark:text-primary-fixed uppercase tracking-wider underline decoration-2 underline-offset-4 transition-colors">Business_&_Tech_Bridge</h3>
+          <h3 class="font-mono font-bold text-sm text-primary dark:text-primary-fixed uppercase tracking-wider underline decoration-2 underline-offset-4 transition-colors">Color Science → Machine Learning</h3>
           <div class="font-mono text-sm text-on-surface-variant dark:text-slate-300 border-l-4 border-primary pl-6 py-1 transition-colors">
             <p class="leading-relaxed">
-              I act as the bridge between technical execution and business goals. With a background in International Business (Dipl.-Kaufmann), I ensure that machine learning pipelines solve real-world problems in high-stakes fields like Life Sciences and ESG.
+              For 20 years I worked as a freelance editor and colorist in broadcast and film: color spaces, 3×3 matrices, LUTs, scopes, noise and compression artifacts were my daily material. Today I apply that signal-level intuition to computer vision, because many model failures start before the model – in illumination, scanner color or sensor drift. My current focus: how image standardization makes models more robust to domain shift.
             </p>
           </div>
         </div>
@@ -66,13 +57,13 @@ import operatorProfile from '../assets/operator_profile.jpg';
           <h3 class="font-mono font-bold text-sm text-primary dark:text-primary-fixed uppercase tracking-wider underline decoration-2 underline-offset-4 transition-colors">Data_Integrity</h3>
           <div class="font-mono text-sm text-on-surface-variant dark:text-slate-300 border-l-4 border-primary pl-6 py-1 transition-colors">
             <p class="leading-relaxed">
-              A model is only as good as its data. My experience with complex visual pipelines ensures that every system I build is founded on robust validation, quality assurance, and clean signal processing.
+              A model is only as good as its data. My experience with complex visual pipelines ensures that my pipelines are founded on robust validation, quality assurance, and clean signal processing.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Visual Systems Architect Manifest -->
+      <!-- Technical Stack -->
       <div class="bg-surface-container dark:bg-slate-900 p-8 border-l-8 border-primary dark:border-secondary-container relative overflow-hidden transition-colors">
         <div class="absolute top-0 right-0 p-2 opacity-5 dark:opacity-10 pointer-events-none">
           <span class="material-symbols-outlined text-6xl text-on-surface dark:text-white transition-colors" aria-hidden="true">terminal</span>
@@ -111,8 +102,8 @@ import operatorProfile from '../assets/operator_profile.jpg';
           </div>
           <div>
             <span class="block font-mono text-xs text-slate-600 dark:text-slate-400 uppercase font-bold mb-1">Domain Focus</span>
-            {/* TODO(owner): Add evidence for Pharma or retain Digital Pathology / ESG / Media */}
-            <span class="font-mono text-xs md:text-sm text-on-background dark:text-slate-200">Digital Pathology, ESG, Media</span>
+            {/* TODO(Stephan): "AgTech" ergänzen, sobald das erste Plant-Disease-Repo öffentlich ist */}
+            <span class="font-mono text-xs md:text-sm text-on-background dark:text-slate-200">Digital Pathology, Earth Observation</span>
           </div>
           <div>
             <span class="block font-mono text-xs text-slate-600 dark:text-slate-400 uppercase font-bold mb-1">Core Signal</span>
@@ -121,8 +112,7 @@ import operatorProfile from '../assets/operator_profile.jpg';
           </div>
           <div>
             <span class="block font-mono text-xs text-slate-600 dark:text-slate-400 uppercase font-bold mb-1">Availability</span>
-            {/* TODO(owner): Confirm exact availability status wording */}
-            <span class="font-mono text-xs md:text-sm text-emerald-600 dark:text-emerald-400 font-bold uppercase">Open to projects</span>
+            <span class="font-mono text-xs md:text-sm text-emerald-600 dark:text-emerald-400 font-bold uppercase">Part-time role (20–40%), Basel</span>
           </div>
         </div>
       </div>
