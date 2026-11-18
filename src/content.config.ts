@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const projects = defineCollection({
@@ -18,8 +19,8 @@ const projects = defineCollection({
       filename: z.string(),
       code: z.string(),
     }),
-    githubUrl: z.string().url(),
-    liveUrl: z.string().url().optional(),
+    githubUrl: z.url(),
+    liveUrl: z.url().optional(),
     imageUrl: image(),
     reportId: z.string(), // e.g. "SPEC_LAB_NORM_01"
     keywords: z.array(z.string()).optional(),
